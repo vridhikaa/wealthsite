@@ -1735,23 +1735,82 @@ const faqSchema = {
     z-index: 2;
     display: grid;
     place-items: center;
-    width: 4.5rem;
-    height: 4.5rem;
-    border: 2px solid #f5d58c;
+    width: 4.9rem;
+    height: 4.9rem;
+    overflow: hidden;
+    border: 2px solid #fff0ad;
     border-radius: 50%;
-    color: #fff0b5;
+    color: #fff8d0;
     font:
-      700 1.15rem Georgia,
+      800 1.25rem Georgia,
       serif;
     letter-spacing: 0.1em;
     text-shadow:
-      0 1px 0 #8a5b18,
-      0 0 0.8rem rgba(255, 222, 130, 0.9);
-    background: radial-gradient(circle at 35% 28%, #fff3b0 0%, #d7a641 28%, #a96d1f 62%, #6d4315 100%);
+      0 1px 0 #6d4212,
+      0 0 0.8rem rgba(255, 229, 132, 0.95);
+    background: linear-gradient(135deg, #7b4a13 0%, #d59b2e 18%, #fff0a1 35%, #b6751b 52%, #ffe58c 70%, #8d5817 100%);
+    background-size: 240% 240%;
     box-shadow:
-      inset 0 0 0 3px rgba(255, 241, 172, 0.42),
-      inset 0 0 0 7px rgba(117, 69, 13, 0.35),
-      0 0 1.4rem rgba(236, 191, 85, 0.7);
+      inset 0 0 0 3px rgba(255, 248, 193, 0.72),
+      inset 0 0 0 7px rgba(104, 59, 9, 0.42),
+      0 0 0.6rem rgba(255, 221, 107, 0.95),
+      0 0 1.8rem rgba(236, 174, 47, 0.62);
+    animation: vf-metallic-shimmer 3.8s ease-in-out infinite;
+  }
+  .vf-pinup-seal::before,
+  .vf-pinup-seal::after {
+    content: '';
+    position: absolute;
+    inset: -40%;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 38%, rgba(255, 255, 224, 0.95) 47%, transparent 55%);
+    transform: translateX(-75%) rotate(12deg);
+    animation: vf-gold-glint 3.2s ease-in-out infinite;
+  }
+  .vf-pinup-seal::after {
+    inset: 0;
+    background:
+      radial-gradient(circle at 22% 24%, rgba(255, 255, 225, 0.95) 0 1px, transparent 2px),
+      radial-gradient(circle at 76% 68%, rgba(255, 244, 177, 0.9) 0 1px, transparent 2px),
+      radial-gradient(circle at 65% 20%, rgba(255, 255, 225, 0.8) 0 1px, transparent 2px);
+    background-size: 100% 100%;
+    animation: vf-gold-sparkle 2.1s ease-in-out infinite alternate;
+  }
+  @keyframes vf-metallic-shimmer {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  @keyframes vf-gold-glint {
+    0%,
+    25% {
+      transform: translateX(-75%) rotate(12deg);
+      opacity: 0;
+    }
+    45%,
+    65% {
+      transform: translateX(75%) rotate(12deg);
+      opacity: 1;
+    }
+    85%,
+    100% {
+      transform: translateX(115%) rotate(12deg);
+      opacity: 0;
+    }
+  }
+  @keyframes vf-gold-sparkle {
+    from {
+      opacity: 0.42;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.04);
+    }
   }
   .vf-founder-identity {
     display: grid;
@@ -2612,6 +2671,11 @@ const faqSchema = {
     .vf-flip-card:hover .vf-flip-inner,
     .vf-flip-card:focus-within .vf-flip-inner {
       transform: none;
+    }
+    .vf-pinup-seal,
+    .vf-pinup-seal::before,
+    .vf-pinup-seal::after {
+      animation: none;
     }
   }
 </style>
