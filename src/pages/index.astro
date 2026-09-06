@@ -536,7 +536,8 @@ const faqSchema = {
             >
           </div><div class="vf-calc-row">
             <label
-              >Monthly investment <output id="investment-value">₹ 25,000</output><input
+              ><span id="investment-label">Monthly investment</span>
+              <output id="investment-value">₹ 25,000</output><input
                 id="investment"
                 type="range"
                 min="5000"
@@ -563,7 +564,7 @@ const faqSchema = {
                 value="12"
               /></label
             >
-          </div><div class="vf-calc-extra">
+          </div><div class="vf-calc-extra" data-sip-only>
             <label
               >Annual SIP step-up <output id="stepup-value">10%</output><input
                 id="stepup"
@@ -2264,6 +2265,8 @@ const faqSchema = {
   };
   const moneyFull = (value: number) => `₹ ${Math.round(value).toLocaleString('en-IN')}`;
   const investment = document.querySelector<HTMLInputElement>('#investment');
+  const investmentLabel = document.querySelector<HTMLElement>('#investment-label');
+  const sipOnly = document.querySelector<HTMLElement>('[data-sip-only]');
   const years = document.querySelector<HTMLInputElement>('#years');
   const rate = document.querySelector<HTMLInputElement>('#rate');
   const stepup = document.querySelector<HTMLInputElement>('#stepup');
@@ -2278,9 +2281,11 @@ const faqSchema = {
   const futureValue = document.querySelector<HTMLOutputElement>('#future-value');
   const principalValue = document.querySelector<HTMLOutputElement>('#principal-value');
   const growthValue = document.querySelector<HTMLOutputElement>('#growth-value');
+  let calculatorMode: 'sip' | 'lumpsum' = 'sip';
   const updateCalculator = () => {
     if (
       !investment ||
+      !investmentLabel ||
       !years ||
       !rate ||
       !investmentValue ||
@@ -2306,12 +2311,22 @@ const faqSchema = {
     const months = horizon * 12;
     let future = 0;
     let principal = 0;
-    for (let month = 0; month < months; month += 1) {
-      const currentMonthly = monthly * (1 + annualStepup) ** Math.floor(month / 12);
-      future = (future + currentMonthly) * (1 + monthlyRate);
-      principal += currentMonthly;
+    if (calculatorMode === 'lumpsum') {
+      principal = monthly;
+      future = principal * (1 + annualRate / 100) ** horizon;
+    } else {
+      for (let month = 0; month < months; month += 1) {
+        const currentMonthly = monthly * (1 + annualStepup) ** Math.floor(month / 12);
+        future = (future + currentMonthly) * (1 + monthlyRate);
+        principal += currentMonthly;
+      }
     }
     const inflationAdjusted = future / 1.06 ** horizon;
+    investmentLabel.textContent = calculatorMode === 'lumpsum' ? 'One-time investment' : 'Monthly investment';
+    investment.min = calculatorMode === 'lumpsum' ? '10000' : '5000';
+    investment.max = calculatorMode === 'lumpsum' ? '100000000' : '200000';
+    investment.step = calculatorMode === 'lumpsum' ? '10000' : '5000';
+    if (sipOnly) sipOnly.hidden = calculatorMode === 'lumpsum';
     investmentValue.textContent = moneyFull(monthly);
     yearsValue.textContent = `${horizon} years · ${months.toLocaleString('en-IN')} months`;
     rateValue.textContent = `${annualRate}%`;
@@ -2324,6 +2339,16 @@ const faqSchema = {
     goalGap.textContent = future >= goalAmount ? `+ ${money(future - goalAmount)}` : `− ${money(goalAmount - future)}`;
   };
   [investment, years, rate, stepup, goal].forEach((control) => control?.addEventListener('input', updateCalculator));
+  document.querySelectorAll<HTMLButtonElement>('[data-calc]').forEach((tab) =>
+    tab.addEventListener('click', () => {
+      calculatorMode = tab.dataset.calc === 'lumpsum' ? 'lumpsum' : 'sip';
+      document.querySelectorAll('[data-calc]').forEach((item) => {
+        item.classList.toggle('is-active', item === tab);
+        item.setAttribute('aria-selected', String(item === tab));
+      });
+      updateCalculator();
+    })
+  );
   updateCalculator();
   const menu = document.querySelector('.vf-menu');
   const nav = document.querySelector('.vf-nav');
