@@ -498,7 +498,8 @@ const faqSchema = {
                 max="50000000"
                 step="500000"
                 value="7500000"
-              /></label>
+              /></label
+            >
           </div><div class="vf-calc-result">
             <div><span>Estimated value*</span><strong id="future-value">₹ 58.1 L</strong></div><div>
               <span>Your investment</span><strong id="principal-value">₹ 30.0 L</strong>
@@ -587,7 +588,8 @@ const faqSchema = {
           questions and the confidence to take the next step.
         </p><p class="vf-founder-signoff">Human-led. Research-aware. Built around your context.</p><a
           href="#contact"
-          class="vf-text-link">Start a conversation <span>↗</span></a>
+          class="vf-text-link">Start a conversation <span>↗</span></a
+        >
       </div>
     </section>
 
@@ -678,16 +680,41 @@ const faqSchema = {
   :global(html) {
     scroll-behavior: smooth;
     background: #f4f1e9;
+    overflow-x: hidden;
   }
   :global(body) {
     background: #f4f1e9 !important;
     color: #102d4d !important;
     font-family: var(--font-inter), Arial, sans-serif;
+    min-width: 320px;
+    overflow-x: hidden;
   }
-  :global(*) {
+  :global(*),
+  :global(*::before),
+  :global(*::after) {
     box-sizing: border-box;
   }
+  :global(img),
+  :global(svg),
+  :global(video) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  :global(button),
+  :global(a),
+  :global(input),
+  :global(select),
+  :global(textarea) {
+    font: inherit;
+  }
+  :global(a),
+  :global(button),
+  :global(label) {
+    -webkit-tap-highlight-color: transparent;
+  }
   .vf-shell {
+    width: 100%;
     --navy: #102d4d;
     --ink: #173b5f;
     --gold: #b49358;
@@ -697,6 +724,15 @@ const faqSchema = {
     min-height: 100vh;
     background: var(--ivory);
     overflow: hidden;
+  }
+  .vf-topline,
+  .vf-header,
+  .vf-hero,
+  .vf-section,
+  .vf-trustbar,
+  .vf-contact,
+  .vf-footer {
+    min-width: 0;
   }
   .vf-topline,
   .vf-header,
@@ -1787,6 +1823,142 @@ const faqSchema = {
     .vf-footer-bottom span {
       display: block;
       margin-bottom: 0.7rem;
+    }
+  }
+  @media (max-width: 1100px) and (min-width: 801px) {
+    .vf-instrument-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .vf-practice-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .vf-hero-copy h1 {
+      font-size: clamp(3.5rem, 7vw, 5.8rem);
+    }
+    .vf-trustbar strong {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+    }
+  }
+  @media (max-width: 800px) {
+    .vf-shell {
+      overflow: clip;
+    }
+    .vf-topline,
+    .vf-header,
+    .vf-hero,
+    .vf-section,
+    .vf-trustbar,
+    .vf-contact,
+    .vf-footer {
+      width: 100%;
+      max-width: 100%;
+    }
+    .vf-hero-copy h1,
+    .vf-section h2,
+    .vf-dialog h2 {
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+    .vf-header {
+      gap: 1rem;
+    }
+    .vf-brand img {
+      width: min(150px, 42vw);
+    }
+    .vf-menu,
+    .vf-button,
+    .vf-nav a,
+    .vf-dialog-close {
+      min-height: 44px;
+    }
+    .vf-hero-copy,
+    .vf-approach-body,
+    .vf-section-heading,
+    .vf-founder-copy {
+      min-width: 0;
+    }
+    .vf-hero-actions {
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.9rem 1.2rem;
+    }
+    .vf-hero-logo {
+      width: min(76%, 330px);
+    }
+    .vf-section-heading h2 {
+      font-size: clamp(2.6rem, 12vw, 4rem);
+    }
+    .vf-calc-result {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .vf-calc-result > div:last-child {
+      grid-column: 1 / -1;
+    }
+    .vf-table {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .vf-table-row {
+      min-width: 0;
+    }
+  }
+  @media (max-width: 420px) {
+    .vf-topline {
+      font-size: 0.55rem;
+      letter-spacing: 0.07em;
+    }
+    .vf-header {
+      height: 76px;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .vf-nav {
+      top: 76px;
+    }
+    .vf-hero {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+    .vf-hero-copy h1 {
+      font-size: clamp(3rem, 15vw, 4rem);
+      line-height: 0.95;
+    }
+    .vf-hero-art {
+      min-height: 270px;
+    }
+    .vf-art-ring {
+      width: 190px;
+      height: 190px;
+    }
+    .vf-art-word {
+      font-size: 10rem;
+    }
+    .vf-trustbar {
+      grid-template-columns: 1fr;
+      gap: 1.1rem;
+    }
+    .vf-trustbar p {
+      grid-column: auto;
+    }
+    .vf-calc-result {
+      grid-template-columns: 1fr;
+    }
+    .vf-calc-result > div:last-child {
+      grid-column: auto;
+    }
+    .vf-flip-card,
+    .vf-flip-inner {
+      min-height: 295px;
+    }
+    .vf-flip-face {
+      padding: 1.1rem;
+    }
+    .vf-flip-face strong {
+      font-size: 1.45rem;
+    }
+    .vf-dialog {
+      width: calc(100% - 1.5rem);
+      padding: 1.3rem;
     }
   }
   @media (prefers-reduced-motion: reduce) {
