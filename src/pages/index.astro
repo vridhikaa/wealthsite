@@ -540,78 +540,60 @@ const faqSchema = {
         No black boxes. Each step has a reason, a conversation and a next action you can understand.
       </p>
     </div>
-    <div class="vf-process-tabs" role="tablist" aria-label="Our process">
+    <div class="vf-process-flashcards">
       {
         [
           [
-            '07',
             'Discovery',
             'We listen first.',
             'Your people, priorities, responsibilities and what keeps you awake become part of the brief.',
           ],
           [
-            '08',
             'Diagnosis',
             'We make the picture legible.',
             'We review what you own, owe, earn and need — without judgement or jargon.',
           ],
           [
-            '09',
             'Design',
             'We build the architecture.',
             'A simple structure connects your goals to an investment approach you can explain to your family.',
           ],
           [
-            '10',
             'Implementation',
             'We make the next step doable.',
             'A good plan is only useful when it can be implemented carefully and documented clearly.',
           ],
           [
-            '11',
             'Review',
             'We adapt without reacting.',
             'Life and markets change. Reviews are for deliberate decisions, not noise-driven switching.',
           ],
           [
-            '12',
             'Communication',
             'We keep the door open.',
             'Questions are welcome between reviews. Clarity is part of the service.',
           ],
-        ].map(([number, title, front], index) => (
-          <button
-            class:list={{ 'is-active': index === 0 }}
-            class="vf-process-tab"
-            type="button"
-            role="tab"
-            aria-selected={index === 0 ? 'true' : 'false'}
-            aria-controls={`process-panel-${number}`}
-            id={`process-tab-${number}`}
-            data-process-tab={number}
-          >
-            <>
-              <span class="vf-process-number">{number}</span>
-              <span class="vf-process-title">{title}</span>
-              <span class="vf-process-summary">{front}</span>
-              <span class="vf-process-arrow" aria-hidden="true">
-                ↗
+        ].map(([title, front, back]) => (
+          <article class="vf-flip-card vf-process-card" data-flip-card>
+            <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label={`Show how we do ${title}`}>
+              <span class="vf-flip-face vf-flip-front">
+                <span class="vf-card-tag">Process</span>
+                <strong>{title}</strong>
+                <p>{front}</p>
+                <span class="vf-card-action">
+                  Flip to see how <span aria-hidden="true">↗</span>
+                </span>
               </span>
-            </>
-          </button>
+              <span class="vf-flip-face vf-flip-back">
+                <span class="vf-card-tag">How we do it</span>
+                <strong>{title}</strong>
+                <p>{back}</p>
+                <span class="vf-card-hint">Tap to return ↺</span>
+              </span>
+            </button>
+          </article>
         ))
       }
-    </div>
-    <div
-      class="vf-process-panel"
-      id="process-panel-07"
-      role="tabpanel"
-      aria-labelledby="process-tab-07"
-      data-process-panel
-    >
-      <span class="vf-card-tag">Step 07 / Discovery</span><h3>We listen first.</h3><p>
-        Your people, priorities, responsibilities and what keeps you awake become part of the brief.
-      </p><a href="#contact" class="vf-text-link">Discuss this step <span>↗</span></a>
     </div>
   </section>
 
@@ -1719,6 +1701,51 @@ const faqSchema = {
   .vf-process .vf-section-heading > p {
     color: var(--ivory);
   }
+  .vf-process-flashcards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .vf-process-card,
+  .vf-process-card .vf-flip-inner {
+    min-height: 18rem;
+  }
+  .vf-process-card .vf-flip-face {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 1.45rem;
+  }
+  .vf-process-card .vf-flip-face strong {
+    margin-top: 1.25rem;
+    font-size: clamp(1.35rem, 2.1vw, 2rem);
+    line-height: 1.08;
+  }
+  .vf-process-card .vf-flip-face p {
+    max-width: 29ch;
+    margin-top: 0.8rem;
+    line-height: 1.55;
+  }
+  .vf-process-card .vf-card-action,
+  .vf-process-card .vf-card-hint {
+    margin-top: auto;
+  }
+  .vf-process-card .vf-flip-front {
+    background: linear-gradient(145deg, #f1ede3, #e5dfd1);
+  }
+  .vf-process-card .vf-flip-back {
+    background: linear-gradient(145deg, #2d6d5f, #173c50);
+    color: #f7f3ea;
+  }
+  .vf-process-card .vf-flip-back .vf-card-tag,
+  .vf-process-card .vf-flip-back .vf-card-hint {
+    color: #f1cf86;
+  }
+  .vf-process-card .vf-flip-back strong,
+  .vf-process-card .vf-flip-back p {
+    color: #f7f3ea !important;
+  }
   .vf-process-tabs {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2751,15 +2778,15 @@ const faqSchema = {
     .vf-process-tabs {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .vf-process-tabs {
+    .vf-process-flashcards {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .vf-process-tab {
-      min-height: 12rem;
-      padding: 1.1rem;
+    .vf-process-card,
+    .vf-process-card .vf-flip-inner {
+      min-height: 17rem;
     }
     @media (max-width: 520px) {
-      .vf-process-tabs {
+      .vf-process-flashcards {
         grid-template-columns: 1fr;
       }
     }
@@ -3197,70 +3224,6 @@ const faqSchema = {
       }
     });
   });
-  const processSteps = [
-    [
-      '07',
-      'Discovery',
-      'We listen first.',
-      'Your people, priorities, responsibilities and what keeps you awake become part of the brief.',
-    ],
-    [
-      '08',
-      'Diagnosis',
-      'We make the picture legible.',
-      'We review what you own, owe, earn and need — without judgement or jargon.',
-    ],
-    [
-      '09',
-      'Design',
-      'We build the architecture.',
-      'A simple structure connects your goals to an investment approach you can explain to your family.',
-    ],
-    [
-      '10',
-      'Implementation',
-      'We make the next step doable.',
-      'A good plan is only useful when it can be implemented carefully and documented clearly.',
-    ],
-    [
-      '11',
-      'Review',
-      'We adapt without reacting.',
-      'Life and markets change. Reviews are for deliberate decisions, not noise-driven switching.',
-    ],
-    [
-      '12',
-      'Communication',
-      'We keep the door open.',
-      'Questions are welcome between reviews. Clarity is part of the service.',
-    ],
-  ];
-  const processPanel = document.querySelector<HTMLElement>('[data-process-panel]');
-  document.querySelectorAll<HTMLButtonElement>('[data-process-tab]').forEach((tab) => {
-    const activateProcessTab = () => {
-      const step = processSteps.find(([number]) => number === tab.dataset.processTab);
-      if (!step || !processPanel) return;
-      const [number, title, front, back] = step;
-      document.querySelectorAll<HTMLButtonElement>('[data-process-tab]').forEach((item) => {
-        const active = item === tab;
-        item.classList.toggle('is-active', active);
-        item.setAttribute('aria-selected', String(active));
-      });
-      processPanel.innerHTML = `<span class="vf-card-tag">Step ${number} / ${title}</span><h3>${front}</h3><p>${back}</p><a href="#contact" class="vf-text-link">Discuss this step <span>↗</span></a>`;
-      processPanel.setAttribute('aria-labelledby', `process-tab-${number}`);
-    };
-    tab.addEventListener('click', activateProcessTab);
-    tab.addEventListener('keydown', (event) => {
-      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
-      event.preventDefault();
-      const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-process-tab]'));
-      const currentIndex = tabs.indexOf(tab);
-      const nextIndex =
-        event.key === 'ArrowRight' ? (currentIndex + 1) % tabs.length : (currentIndex - 1 + tabs.length) % tabs.length;
-      tabs[nextIndex]?.focus();
-      tabs[nextIndex]?.click();
-    });
-  });
   document.querySelectorAll<HTMLElement>('[data-card-action]').forEach((action) => {
     const goToTarget = () => {
       const target = action.dataset.cardAction;
@@ -3277,14 +3240,8 @@ const faqSchema = {
   document.querySelectorAll<HTMLElement>('[data-flip-card]').forEach((card) => {
     const button = card.querySelector<HTMLButtonElement>('.vf-flip-inner');
     button?.addEventListener('click', () => {
-      card.classList.remove('is-active');
-      void card.offsetWidth;
-      card.classList.add('is-active');
-      button.setAttribute('aria-pressed', 'true');
-      window.setTimeout(() => {
-        card.classList.remove('is-active');
-        button.setAttribute('aria-pressed', 'false');
-      }, 1800);
+      const isFlipped = card.classList.toggle('is-active');
+      button.setAttribute('aria-pressed', String(isFlipped));
     });
   });
   const matrixContent = document.querySelector<HTMLElement>('#matrix-content');
