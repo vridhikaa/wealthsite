@@ -1,10 +1,10 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7gEWxXc5BbXARFLxde5NYhDc0EkdVR.png';
+const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-8O1fGPXeCwjl97D7yMhlbMRCwMM2wz.png';
 
 const metadata = {
-  title: 'Wealth Management & Investment Advisory in India | Vridhikaa Finserv',
+  title: 'Wealth Management & Investment Consult in India | Vridhikaa Finserv',
   description:
     'Human, research-led wealth management in India across mutual funds, bonds, insurance, index funds and alternatives. Build a clearer long-term investment plan with Vridhikaa Finserv.',
   canonical: 'https://vridhikaafinserv.com/',
@@ -45,7 +45,7 @@ const faqSchema = {
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <main class="vf-shell">
     <div class="vf-topline">
-      <span>Independent wealth advisory</span><span>SEBI | AMFI | IRDAI aligned practice</span>
+      <span>Independent wealth consult</span><span>SEBI | AMFI | IRDAI aligned practice</span>
     </div>
     <header class="vf-header" id="site-header">
       <a class="vf-brand" href="#top" aria-label="Vridhikaa Finserv home"
@@ -69,7 +69,6 @@ const faqSchema = {
 
     <section class="vf-hero" id="top">
       <div class="vf-hero-copy">
-        <p class="vf-kicker">Wealth, with a point of view.</p>
         <h1>Make your money<br /><em>mean more.</em></h1>
         <p class="vf-lead">
           Thoughtful advice for the capital you have built — and the life, legacy and freedom it is meant to support.
@@ -87,7 +86,7 @@ const faqSchema = {
           src={logoUrl}
           alt="Vridhikaa Finserv upward arrow and lotus emblem"
         /><div class="vf-art-caption">
-          Live Sorted<br /><span>Since 2015 · India</span>
+          <strong>Wealth, with a point of view.</strong><span>Live Sorted · India</span>
         </div>
       </div>
     </section>
@@ -576,7 +575,7 @@ const faqSchema = {
     <section class="vf-section vf-founder" id="about">
       <div class="vf-founder-photo">
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/me-1RSNgNSrc3BYlUggr1tbuN8dKZtzX5.jpg"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/me-2ieLApt9JZN5dboF3DJ5nTz2QRXlU3.png"
           alt="Founder of Vridhikaa Finserv"
           loading="lazy"
         />
@@ -938,13 +937,26 @@ const faqSchema = {
   }
   .vf-art-caption {
     position: absolute;
-    bottom: 2rem;
-    left: 2rem;
+    bottom: 1.8rem;
+    left: 0;
+    right: 0;
+    display: grid;
+    gap: 0.35rem;
+    padding: 0 1.25rem;
+    text-align: center;
     font-size: 0.65rem;
     letter-spacing: 0.14em;
     line-height: 1.7;
     text-transform: uppercase;
     color: #d9d3c7;
+  }
+  .vf-art-caption strong {
+    color: var(--ivory);
+    font:
+      500 clamp(0.85rem, 1.5vw, 1.1rem) / 1.2 Georgia,
+      serif;
+    letter-spacing: 0.02em;
+    text-transform: none;
   }
   .vf-art-caption span {
     color: var(--gold);
@@ -1106,7 +1118,8 @@ const faqSchema = {
   .vf-flip-card {
     min-height: 410px;
     perspective: 1400px;
-    contain: layout paint;
+    contain: layout;
+    transition: transform 260ms cubic-bezier(0.2, 0.75, 0.2, 1);
   }
   .vf-flip-inner {
     position: relative;
@@ -1128,8 +1141,15 @@ const faqSchema = {
     transform: rotateY(180deg);
   }
   @media (hover: hover) and (pointer: fine) {
-    .vf-flip-card:hover .vf-flip-inner {
-      box-shadow: 0 1.25rem 2.5rem rgba(16, 45, 77, 0.16);
+    .vf-flip-card:hover,
+    .vf-flip-card:focus-within {
+      position: relative;
+      z-index: 8;
+      transform: scale(1.08);
+    }
+    .vf-flip-card:hover .vf-flip-inner,
+    .vf-flip-card:focus-within .vf-flip-inner {
+      box-shadow: 0 1.25rem 2.5rem rgba(16, 45, 77, 0.22);
     }
   }
   .vf-flip-face {
@@ -1998,8 +2018,13 @@ const faqSchema = {
       scroll-behavior: auto;
     }
     .vf-button,
+    .vf-flip-card,
     .vf-flip-inner {
       transition: none;
+    }
+    .vf-flip-card:hover,
+    .vf-flip-card:focus-within {
+      transform: none;
     }
     .vf-flip-card.is-flipped .vf-flip-inner {
       transform: none;
