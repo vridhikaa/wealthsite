@@ -769,9 +769,40 @@ const faqSchema = {
       <div>
         <p class="vf-kicker">A considered universe</p><h2>Choose the right<br /><em>kind of certainty.</em></h2>
       </div><p>Different instruments solve different problems. The right answer is often a blend.</p>
-    </div><div class="vf-matrix-tabs" role="tablist">
-      <button class="is-active" data-matrix="growth">Growth</button><button data-matrix="stability">Stability</button
-      ><button data-matrix="protection">Protection</button>
+    </div>
+    <div class="vf-matrix-tabs" role="tablist" aria-label="Financial instruments">
+      <button
+        class="is-active"
+        id="matrix-tab-growth"
+        role="tab"
+        aria-selected="true"
+        aria-controls="matrix-content"
+        data-matrix="growth">Growth</button
+      ><button
+        id="matrix-tab-stability"
+        role="tab"
+        aria-selected="false"
+        aria-controls="matrix-content"
+        data-matrix="stability">Stability</button
+      ><button
+        id="matrix-tab-protection"
+        role="tab"
+        aria-selected="false"
+        aria-controls="matrix-content"
+        data-matrix="protection">Protection</button
+      ><button
+        id="matrix-tab-claims"
+        role="tab"
+        aria-selected="false"
+        aria-controls="matrix-content"
+        data-matrix="claims">Insurance claim settlement</button
+      ><button
+        id="matrix-tab-credit"
+        role="tab"
+        aria-selected="false"
+        aria-controls="matrix-content"
+        data-matrix="credit">Credit repair</button
+      >
     </div><div class="vf-matrix-table" id="matrix-content">
       <div class="vf-table-head">
         <span>Instrument</span><span>Role</span><span>Best considered for</span><span>Starting point</span>
@@ -2089,7 +2120,10 @@ const faqSchema = {
   }
   .vf-matrix-tabs button {
     min-width: 8rem;
+    min-height: 3.5rem;
     padding: 0.8rem 1rem;
+    white-space: normal;
+    line-height: 1.25;
     border-radius: 0.2rem;
     border-bottom: 2px solid transparent;
     transition:
@@ -2293,15 +2327,67 @@ const faqSchema = {
   @media (max-width: 640px) {
     .vf-matrix-tabs {
       overflow-x: auto;
+      align-items: stretch;
       justify-content: flex-start;
       scrollbar-width: thin;
     }
     .vf-matrix-tabs button {
-      flex: 0 0 auto;
+      flex: 0 0 10rem;
+      min-width: 10rem;
+    }
+    .vf-table-head {
+      display: none;
+    }
+    .vf-table-row {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+      padding: 1rem;
+    }
+    .vf-table-row::before {
+      display: block;
+      color: var(--emerald);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .vf-table-row > * {
+      display: block;
+    }
+    .vf-table-row > span:nth-child(2)::before {
+      content: 'Role · ';
+      color: var(--emerald);
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .vf-table-row > span:nth-child(3)::before {
+      content: 'Considered for · ';
+      color: var(--emerald);
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .vf-table-row > b::before {
+      content: 'Starting point · ';
+      color: var(--emerald);
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
   }
   .vf-matrix-table {
+    display: grid;
     border-top: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .vf-table-head,
+  .vf-table-row {
+    min-width: 0;
+  }
+  .vf-table-head > *,
+  .vf-table-row > * {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
   .vf-table-head,
   .vf-table-row {
@@ -2707,11 +2793,18 @@ const faqSchema = {
       display: none;
     }
     .vf-table-row {
-      grid-template-columns: 1fr 1fr;
-      gap: 0.7rem;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.45rem;
+      padding: 1rem;
+      line-height: 1.45;
     }
     .vf-table-row strong {
-      grid-column: 1/-1;
+      grid-column: auto;
+      font-size: 1rem;
+    }
+    .vf-table-row span,
+    .vf-table-row b {
+      overflow-wrap: anywhere;
     }
     .vf-footer {
       grid-template-columns: 1fr 1fr;
@@ -3167,10 +3260,57 @@ const faqSchema = {
       }, 1800);
     });
   });
-  document.querySelectorAll('[data-matrix]').forEach((button) =>
+  const matrixContent = document.querySelector<HTMLElement>('#matrix-content');
+  const matrixData: Record<string, { rows: [string, string, string, string][] }> = {
+    growth: {
+      rows: [
+        ['Equity mutual funds', 'Long-term growth', 'Goals 7+ years away', '₹ 5,000 SIP'],
+        ['Index funds', 'Core market exposure', 'Simple diversified allocation', '₹ 500 SIP'],
+        ['Flexicap funds', 'Active allocation', 'Long-term wealth creation', '₹ 1,000 SIP'],
+      ],
+    },
+    stability: {
+      rows: [
+        ['Debt mutual funds', 'Income and stability', 'Nearer-term goals', '₹ 5,000 SIP'],
+        ['Target maturity funds', 'Defined maturity path', 'Known future liabilities', 'Scheme-specific'],
+        ['Bank fixed deposits', 'Capital familiarity', 'Short-term planning', 'Bank terms apply'],
+      ],
+    },
+    protection: {
+      rows: [
+        ['Emergency reserve', 'Liquidity buffer', 'Unexpected expenses', '3–12 months'],
+        ['Term insurance', 'Family protection', 'Income replacement needs', 'Policy-specific'],
+        ['Health cover', 'Medical risk transfer', 'Hospitalisation costs', 'Policy-specific'],
+      ],
+    },
+    claims: {
+      rows: [
+        ['Policy documents', 'Evidence and eligibility', 'Before filing a claim', 'Keep copies'],
+        ['Claim intimation', 'Start the process promptly', 'A covered event occurs', 'Insurer timelines'],
+        ['Settlement review', 'Check decision and deductions', 'After insurer response', 'Escalation may apply'],
+      ],
+    },
+    credit: {
+      rows: [
+        ['Credit report', 'Find reporting errors', 'Before applying for credit', 'Obtain from bureau'],
+        ['Dispute records', 'Correct inaccurate information', 'A genuine reporting issue', 'Keep evidence'],
+        ['Repayment plan', 'Build consistent history', 'Outstanding obligations', 'Lender terms apply'],
+      ],
+    },
+  };
+  const renderMatrix = (key: string) => {
+    const data = matrixData[key];
+    if (!matrixContent || !data) return;
+    matrixContent.innerHTML = `<div class="vf-table-head"><span>Instrument</span><span>Role</span><span>Best considered for</span><span>Starting point</span></div>${data.rows.map(([instrument, role, considered, start]) => `<div class="vf-table-row"><strong>${instrument}</strong><span>${role}</span><span>${considered}</span><b>${start}</b></div>`).join('')}`;
+  };
+  document.querySelectorAll<HTMLButtonElement>('[data-matrix]').forEach((button) =>
     button.addEventListener('click', () => {
-      document.querySelectorAll('[data-matrix]').forEach((item) => item.classList.remove('is-active'));
-      button.classList.add('is-active');
+      document.querySelectorAll<HTMLButtonElement>('[data-matrix]').forEach((item) => {
+        const active = item === button;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-selected', String(active));
+      });
+      renderMatrix(button.dataset.matrix ?? 'growth');
     })
   );
   document.querySelectorAll<HTMLButtonElement>('[data-fund]').forEach((button) =>
