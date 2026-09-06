@@ -361,7 +361,8 @@ const faqSchema = {
               ><strong>Loan against<br /><em>MFs & stocks</em></strong><p class="vf-card-summary">
                 Borrow against eligible investments without immediately selling them, subject to lender terms.
               </p><small>Check margin, interest and pledge terms</small></span
-            ></button>
+            ></button
+          >
         </article>
         <article class="vf-flip-card" data-flip-card>
           <button class="vf-flip-inner" type="button" aria-label="Show SIF details"
@@ -371,7 +372,8 @@ const faqSchema = {
               ><strong>Specialised<br /><em>Investment Funds</em></strong><p class="vf-card-summary">
                 A newer mutual fund structure with a focused strategy and a higher need for suitability review.
               </p><small>Read the scheme documents carefully</small></span
-            ></button>
+            ></button
+          >
         </article>
         <article class="vf-flip-card" data-flip-card>
           <button class="vf-flip-inner" type="button" aria-label="Show REIT details"
@@ -381,7 +383,8 @@ const faqSchema = {
               ><strong>Real Estate<br /><em>REITs</em></strong><p class="vf-card-summary">
                 Listed vehicles that provide access to income-generating commercial real estate.
               </p><small>Consider market, occupancy and liquidity risks</small></span
-            ></button>
+            ></button
+          >
         </article>
         <article class="vf-flip-card" data-flip-card>
           <button class="vf-flip-inner" type="button" aria-label="Show engineered products details"
@@ -391,7 +394,8 @@ const faqSchema = {
               ><strong>Engineered<br /><em>products</em></strong><p class="vf-card-summary">
                 Designed payoff structures where caps, barriers, costs and issuer risk must be understood first.
               </p><small>Complexity and liquidity need careful review</small></span
-            ></button>
+            ></button
+          >
         </article>
         <article class="vf-flip-card" data-flip-card>
           <button class="vf-flip-inner" type="button" aria-label="Show gold and commodities details"
@@ -401,7 +405,8 @@ const faqSchema = {
               ><strong>Gold &<br /><em>commodities</em></strong><p class="vf-card-summary">
                 Potential diversifiers that can behave differently from equities and bonds across cycles.
               </p><small>Role, volatility and access costs matter</small></span
-            ></button>
+            ></button
+          >
         </article>
       </div>
       <article class="vf-flip-card" data-flip-card>
@@ -1659,36 +1664,53 @@ const faqSchema = {
   }
   .vf-process-tabs {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 0.65rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
     margin-top: 2.5rem;
   }
   .vf-process-tab {
     position: relative;
     display: flex;
-    min-height: 10.5rem;
+    min-height: 13rem;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.7rem;
-    padding: 1.15rem;
+    padding: 1.35rem;
     border: 1px solid rgba(247, 243, 234, 0.24);
-    border-radius: 0.25rem;
-    background: #173c50;
+    border-radius: 0.35rem;
+    background: linear-gradient(145deg, #1b4658, #143246);
     color: var(--ivory);
     cursor: pointer;
     text-align: left;
+    box-shadow:
+      inset 0 0 0 1px rgba(203, 169, 96, 0.05),
+      0 0.8rem 1.5rem rgba(4, 18, 30, 0.12);
     transition:
-      background 180ms ease,
-      border-color 180ms ease,
-      transform 180ms ease;
+      background 220ms ease,
+      border-color 220ms ease,
+      transform 220ms ease,
+      box-shadow 220ms ease;
   }
   .vf-process-tab:hover,
   .vf-process-tab:focus-visible,
   .vf-process-tab.is-active {
     border-color: var(--gold);
-    background: linear-gradient(145deg, #245b51, #173c50);
+    background: linear-gradient(145deg, #2d6d5f, #173c50);
     outline: none;
-    transform: translateY(-0.25rem);
+    transform: translateY(-0.35rem);
+    box-shadow:
+      0 1rem 2rem rgba(4, 18, 30, 0.24),
+      0 0 0 1px rgba(203, 169, 96, 0.18);
+  }
+  .vf-process-tab.is-active::after {
+    content: 'How we do it';
+    position: absolute;
+    right: 1.35rem;
+    bottom: 1.35rem;
+    color: #f1cf86;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
   .vf-process-number,
   .vf-process-arrow {
@@ -1703,9 +1725,10 @@ const faqSchema = {
       serif;
   }
   .vf-process-summary {
-    color: rgba(247, 243, 234, 0.72);
-    font-size: 0.7rem;
-    line-height: 1.45;
+    max-width: 24ch;
+    color: rgba(247, 243, 234, 0.76);
+    font-size: 0.76rem;
+    line-height: 1.55;
   }
   .vf-process-arrow {
     position: absolute;
@@ -2590,14 +2613,19 @@ const faqSchema = {
       grid-template-columns: 1fr;
     }
     .vf-process-tabs {
-      display: flex;
-      overflow-x: auto;
-      padding-bottom: 0.5rem;
-      scroll-snap-type: x proximity;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .vf-process-tabs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .vf-process-tab {
-      flex: 0 0 min(76vw, 17rem);
-      scroll-snap-align: start;
+      min-height: 12rem;
+      padding: 1.1rem;
+    }
+    @media (max-width: 520px) {
+      .vf-process-tabs {
+        grid-template-columns: 1fr;
+      }
     }
     .vf-founder {
       grid-template-columns: 1fr;
