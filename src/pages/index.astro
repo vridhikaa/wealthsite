@@ -563,11 +563,78 @@ const faqSchema = {
       </div><div class="vf-tool-layout">
         <div class="vf-calculator">
           <div class="vf-tool-tabs" role="tablist">
-            <button class="is-active" data-calc="sip" role="tab">Monthly SIP</button><button
+            <button class="is-active" data-calc="sip" role="tab" aria-selected="true">Monthly SIP</button><button
               data-calc="lumpsum"
-              role="tab">Lumpsum</button
-            >
-          </div><div class="vf-calc-row">
+              role="tab"
+              aria-selected="false">Lumpsum</button
+            ><button data-calc="bond" role="tab" aria-selected="false">Bonds vs Bank FD</button>
+          </div><div class="vf-bond-calculator" data-bond-panel hidden>
+            <div class="vf-bond-inputs">
+              <label
+                >Investment amount <output id="bond-amount-value">₹ 10,00,000</output><input
+                  id="bond-amount"
+                  type="range"
+                  min="100000"
+                  max="100000000"
+                  step="100000"
+                  value="1000000"
+                /></label
+              >
+              <label
+                >Tenure <output id="bond-tenure-value">5 years</output><input
+                  id="bond-tenure"
+                  type="range"
+                  min="1"
+                  max="20"
+                  step="1"
+                  value="5"
+                /></label
+              >
+              <label
+                >Bank FD rate <output id="fd-rate-value">7%</output><input
+                  id="fd-rate"
+                  type="range"
+                  min="4"
+                  max="12"
+                  step="0.1"
+                  value="7"
+                /></label
+              >
+              <label
+                >Corporate bond rate <output id="bond-rate-value">9%</output><input
+                  id="bond-rate"
+                  type="range"
+                  min="6"
+                  max="16"
+                  step="0.1"
+                  value="9"
+                /></label
+              >
+            </div>
+            <div class="vf-bond-tax-row">
+              <label for="bond-tax">Tax slab</label><select id="bond-tax"
+                ><option value="0">0%</option><option value="0.1">10%</option><option value="0.2">20%</option><option
+                  value="0.3"
+                  selected>30%</option
+                ></select>
+            </div>
+            <div class="vf-bond-results">
+              <div><span>Bank FD maturity</span><strong id="fd-maturity">₹ 13.06 Lakh</strong></div><div>
+                <span>Bond maturity</span><strong id="bond-maturity">₹ 15.39 Lakh</strong>
+              </div><div class="vf-bond-highlight">
+                <span>Extra post-tax wealth</span><strong id="bond-extra">+ ₹ 1.63 Lakh</strong>
+              </div>
+            </div>
+            <div class="vf-bond-table">
+              <div><span>Principal</span><strong id="bond-principal">₹ 10.00 Lakh</strong></div><div>
+                <span>FD interest after tax</span><strong id="fd-interest">₹ 2.14 Lakh</strong>
+              </div><div><span>Bond interest after tax</span><strong id="bond-interest">₹ 3.78 Lakh</strong></div>
+            </div>
+            <p class="vf-fineprint">
+              Illustrative annual compounding only. Corporate bonds carry credit, liquidity and market risks; returns
+              are not guaranteed.
+            </p>
+          </div><div class="vf-calc-row" data-sip-tool>
             <label
               ><span id="investment-label">Monthly investment</span>
               <output id="investment-value">₹ 25,000</output><input
@@ -617,7 +684,7 @@ const faqSchema = {
                 value="7500000"
               /></label
             >
-          </div><div class="vf-calc-result">
+          </div><div class="vf-calc-result" data-sip-tool>
             <div><span>Estimated value*</span><strong id="future-value">₹ 58.1 L</strong></div><div>
               <span>Your investment</span><strong id="principal-value">₹ 30.0 L</strong>
             </div><div><span>Illustrative growth</span><strong id="growth-value">₹ 28.1 L</strong></div><div>
@@ -1776,6 +1843,84 @@ const faqSchema = {
     color: var(--navy);
     border-bottom: 2px solid var(--gold);
   }
+  .vf-bond-calculator {
+    padding: 1.5rem 0 0;
+  }
+  .vf-bond-inputs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  .vf-bond-inputs label,
+  .vf-bond-tax-row {
+    color: var(--emerald);
+    font-size: 0.67rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .vf-bond-inputs output {
+    display: block;
+    margin: 0.55rem 0 0.8rem;
+    color: var(--navy);
+    font:
+      1.15rem Georgia,
+      serif;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .vf-bond-tax-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+  .vf-bond-tax-row select {
+    min-height: 2.25rem;
+    padding: 0.35rem 0.6rem;
+    border: 1px solid var(--line);
+    background: var(--ivory);
+    color: var(--navy);
+    font: inherit;
+  }
+  .vf-bond-results,
+  .vf-bond-table {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+  .vf-bond-results > div,
+  .vf-bond-table > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    background: rgba(247, 243, 234, 0.58);
+  }
+  .vf-bond-results span,
+  .vf-bond-table span {
+    color: var(--emerald);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .vf-bond-results strong,
+  .vf-bond-table strong {
+    color: var(--navy);
+    font:
+      1.25rem Georgia,
+      serif;
+  }
+  .vf-bond-highlight {
+    border-color: var(--gold) !important;
+    background: linear-gradient(145deg, #fff8e6, #f1dfb0) !important;
+  }
+  .vf-bond-table {
+    margin-top: 0.75rem;
+  }
+  .vf-bond-table strong {
+    font-size: 1rem;
+  }
   .vf-calc-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2312,6 +2457,11 @@ const faqSchema = {
     .vf-section-heading h2 {
       font-size: clamp(2.6rem, 12vw, 4rem);
     }
+    .vf-bond-inputs,
+    .vf-bond-results,
+    .vf-bond-table {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
     .vf-calc-result {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -2360,6 +2510,11 @@ const faqSchema = {
     }
     .vf-trustbar p {
       grid-column: auto;
+    }
+    .vf-bond-inputs,
+    .vf-bond-results,
+    .vf-bond-table {
+      grid-template-columns: 1fr;
     }
     .vf-calc-result {
       grid-template-columns: 1fr;
@@ -2428,6 +2583,13 @@ const faqSchema = {
   const investment = document.querySelector<HTMLInputElement>('#investment');
   const investmentLabel = document.querySelector<HTMLElement>('#investment-label');
   const sipOnly = document.querySelector<HTMLElement>('[data-sip-only]');
+  const sipTools = document.querySelectorAll<HTMLElement>('[data-sip-tool]');
+  const bondPanel = document.querySelector<HTMLElement>('[data-bond-panel]');
+  const bondAmount = document.querySelector<HTMLInputElement>('#bond-amount');
+  const bondTenure = document.querySelector<HTMLInputElement>('#bond-tenure');
+  const fdRate = document.querySelector<HTMLInputElement>('#fd-rate');
+  const bondRate = document.querySelector<HTMLInputElement>('#bond-rate');
+  const bondTax = document.querySelector<HTMLSelectElement>('#bond-tax');
   const years = document.querySelector<HTMLInputElement>('#years');
   const rate = document.querySelector<HTMLInputElement>('#rate');
   const stepup = document.querySelector<HTMLInputElement>('#stepup');
@@ -2442,7 +2604,31 @@ const faqSchema = {
   const futureValue = document.querySelector<HTMLOutputElement>('#future-value');
   const principalValue = document.querySelector<HTMLOutputElement>('#principal-value');
   const growthValue = document.querySelector<HTMLOutputElement>('#growth-value');
-  let calculatorMode: 'sip' | 'lumpsum' = 'sip';
+  let calculatorMode: 'sip' | 'lumpsum' | 'bond' = 'sip';
+  const updateBondCalculator = () => {
+    if (!bondAmount || !bondTenure || !fdRate || !bondRate || !bondTax) return;
+    const principal = Number(bondAmount.value);
+    const years = Number(bondTenure.value);
+    const tax = Number(bondTax.value);
+    const fdMaturity = principal * (1 + Number(fdRate.value) / 100) ** years;
+    const bondMaturity = principal * (1 + Number(bondRate.value) / 100) ** years;
+    const fdInterest = (fdMaturity - principal) * (1 - tax);
+    const bondInterest = (bondMaturity - principal) * (1 - tax);
+    const setText = (id: string, value: string) => {
+      const element = document.querySelector<HTMLElement>(id);
+      if (element) element.textContent = value;
+    };
+    setText('#bond-amount-value', moneyFull(principal));
+    setText('#bond-tenure-value', `${years} years`);
+    setText('#fd-rate-value', `${Number(fdRate.value).toFixed(1)}%`);
+    setText('#bond-rate-value', `${Number(bondRate.value).toFixed(1)}%`);
+    setText('#fd-maturity', money(fdMaturity));
+    setText('#bond-maturity', money(bondMaturity));
+    setText('#bond-extra', `+ ${money(Math.max(0, bondInterest - fdInterest))}`);
+    setText('#bond-principal', money(principal));
+    setText('#fd-interest', money(fdInterest));
+    setText('#bond-interest', money(bondInterest));
+  };
   const updateCalculator = () => {
     if (
       !investment ||
@@ -2487,7 +2673,15 @@ const faqSchema = {
     investment.min = calculatorMode === 'lumpsum' ? '10000' : '5000';
     investment.max = calculatorMode === 'lumpsum' ? '100000000' : '200000';
     investment.step = calculatorMode === 'lumpsum' ? '10000' : '5000';
-    if (sipOnly) sipOnly.hidden = calculatorMode === 'lumpsum';
+    if (sipOnly) sipOnly.hidden = calculatorMode === 'lumpsum' || calculatorMode === 'bond';
+    sipTools.forEach((tool) => {
+      tool.hidden = calculatorMode === 'bond';
+    });
+    if (bondPanel) bondPanel.hidden = calculatorMode !== 'bond';
+    if (calculatorMode === 'bond') {
+      updateBondCalculator();
+      return;
+    }
     investmentValue.textContent = moneyFull(monthly);
     yearsValue.textContent = `${horizon} years · ${months.toLocaleString('en-IN')} months`;
     rateValue.textContent = `${annualRate}%`;
@@ -2500,9 +2694,12 @@ const faqSchema = {
     goalGap.textContent = future >= goalAmount ? `+ ${money(future - goalAmount)}` : `− ${money(goalAmount - future)}`;
   };
   [investment, years, rate, stepup, goal].forEach((control) => control?.addEventListener('input', updateCalculator));
+  [bondAmount, bondTenure, fdRate, bondRate, bondTax].forEach((control) =>
+    control?.addEventListener('input', updateBondCalculator)
+  );
   document.querySelectorAll<HTMLButtonElement>('[data-calc]').forEach((tab) =>
     tab.addEventListener('click', () => {
-      calculatorMode = tab.dataset.calc === 'lumpsum' ? 'lumpsum' : 'sip';
+      calculatorMode = tab.dataset.calc === 'bond' ? 'bond' : tab.dataset.calc === 'lumpsum' ? 'lumpsum' : 'sip';
       document.querySelectorAll('[data-calc]').forEach((item) => {
         item.classList.toggle('is-active', item === tab);
         item.setAttribute('aria-selected', String(item === tab));
