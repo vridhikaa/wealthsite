@@ -243,7 +243,7 @@ const faqSchema = {
                     stroke-linecap="round"
                     stroke-linejoin="round"></path></svg
                 ></span
-              ><span class="vf-card-tag">01 / Growth</span><strong>Equity<br /><em>mutual funds</em></strong><p
+              ><span class="vf-card-tag">Growth</span><strong>Equity<br /><em>mutual funds</em></strong><p
                 class="vf-card-summary"
               >
                 Diversified market participation for long-term goals, managed within a defined risk profile.
@@ -278,7 +278,7 @@ const faqSchema = {
                   ></path><path d="M14 8v32M24 8v32M34 8v32" stroke="currentColor" stroke-width="1.5" opacity=".65"
                   ></path></svg
                 ></span
-              ><span class="vf-card-tag">02 / Stability</span><strong>Bonds &<br /><em>fixed income</em></strong><p
+              ><span class="vf-card-tag">Stability</span><strong>Bonds &<br /><em>fixed income</em></strong><p
                 class="vf-card-summary"
               >
                 Income-oriented instruments designed to bring stability, liquidity and balance to a portfolio.
@@ -327,7 +327,7 @@ const faqSchema = {
                     stroke="currentColor"
                     stroke-width="3"></rect></svg
                 ></span
-              ><span class="vf-card-tag">03 / Core</span><strong>Index<br /><em>funds</em></strong><p
+              ><span class="vf-card-tag">Core</span><strong>Index<br /><em>funds</em></strong><p
                 class="vf-card-summary"
               >
                 A simple, diversified way to follow a market index with transparent portfolio exposure.
@@ -389,7 +389,7 @@ const faqSchema = {
           <button class="vf-flip-inner" type="button" aria-label="Show loan against mutual funds and stocks details"
             ><span class="vf-flip-face vf-flip-front"
               ><span class="vf-card-icon vf-icon-bond" aria-hidden="true">₹</span><span class="vf-card-tag"
-                >06 / Liquidity</span
+                >Liquidity</span
               ><strong>Loan against<br /><em>MFs & stocks</em></strong><p class="vf-card-summary">
                 Borrow against eligible investments without immediately selling them, subject to lender terms.
               </p><small>Check margin, interest and pledge terms</small></span
@@ -400,7 +400,7 @@ const faqSchema = {
           <button class="vf-flip-inner" type="button" aria-label="Show SIF details"
             ><span class="vf-flip-face vf-flip-front"
               ><span class="vf-card-icon vf-icon-grid" aria-hidden="true">SIF</span><span class="vf-card-tag"
-                >07 / Specialist</span
+                >Specialist</span
               ><strong>Specialised<br /><em>Investment Funds</em></strong><p class="vf-card-summary">
                 A newer mutual fund structure with a focused strategy and a higher need for suitability review.
               </p><small>Read the scheme documents carefully</small></span
@@ -411,7 +411,7 @@ const faqSchema = {
           <button class="vf-flip-inner" type="button" aria-label="Show REIT details"
             ><span class="vf-flip-face vf-flip-front"
               ><span class="vf-card-icon vf-icon-chart" aria-hidden="true">⌂</span><span class="vf-card-tag"
-                >08 / Real assets</span
+                >Real assets</span
               ><strong>Real Estate<br /><em>REITs</em></strong><p class="vf-card-summary">
                 Listed vehicles that provide access to income-generating commercial real estate.
               </p><small>Consider market, occupancy and liquidity risks</small></span
@@ -422,7 +422,7 @@ const faqSchema = {
           <button class="vf-flip-inner" type="button" aria-label="Show engineered products details"
             ><span class="vf-flip-face vf-flip-front"
               ><span class="vf-card-icon vf-icon-dots" aria-hidden="true">◈</span><span class="vf-card-tag"
-                >09 / Structured</span
+                >Structured</span
               ><strong>Engineered<br /><em>products</em></strong><p class="vf-card-summary">
                 Designed payoff structures where caps, barriers, costs and issuer risk must be understood first.
               </p><small>Complexity and liquidity need careful review</small></span
@@ -433,7 +433,7 @@ const faqSchema = {
           <button class="vf-flip-inner" type="button" aria-label="Show gold and commodities details"
             ><span class="vf-flip-face vf-flip-front"
               ><span class="vf-card-icon vf-icon-shield" aria-hidden="true">◇</span><span class="vf-card-tag"
-                >10 / Diversifiers</span
+                >Diversifiers</span
               ><strong>Gold &<br /><em>commodities</em></strong><p class="vf-card-summary">
                 Potential diversifiers that can behave differently from equities and bonds across cycles.
               </p><small>Role, volatility and access costs matter</small></span
@@ -3131,6 +3131,90 @@ const faqSchema = {
     .vf-pinup-seal::before,
     .vf-pinup-seal::after {
       animation: none;
+    }
+  }
+  .vf-instrument-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .vf-instrument-grid .vf-flip-card,
+  .vf-instrument-grid .vf-flip-inner,
+  .vf-instrument-grid .vf-flip-face {
+    min-width: 0;
+    min-height: 22rem;
+  }
+  .vf-instrument-grid .vf-flip-card {
+    height: 100%;
+  }
+  .vf-instrument-grid .vf-flip-inner {
+    width: 100%;
+    height: 100%;
+  }
+  .vf-instrument-grid .vf-flip-face {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    padding: 1.35rem;
+    text-align: left;
+  }
+  .vf-instrument-grid .vf-flip-face strong {
+    max-width: 100%;
+    margin-top: 0.9rem;
+    font-size: clamp(1.25rem, 1.9vw, 1.85rem);
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+  }
+  .vf-instrument-grid .vf-flip-face p {
+    max-width: 30ch;
+    margin-top: 0.75rem;
+    font-size: 0.78rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+  .vf-instrument-grid .vf-flip-face small {
+    max-width: 100%;
+    margin-top: auto;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+  .vf-instrument-grid .vf-card-tag {
+    max-width: 100%;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+  .vf-instrument-grid .vf-card-meter {
+    width: 100%;
+    margin-top: auto;
+  }
+  .vf-instrument-grid .vf-flip-back a {
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 1100px) {
+    .vf-instrument-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 760px) {
+    .vf-instrument-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .vf-instrument-grid .vf-flip-card,
+    .vf-instrument-grid .vf-flip-inner,
+    .vf-instrument-grid .vf-flip-face {
+      min-height: 20rem;
+    }
+  }
+  @media (max-width: 520px) {
+    .vf-instrument-grid {
+      grid-template-columns: 1fr;
+    }
+    .vf-instrument-grid .vf-flip-card,
+    .vf-instrument-grid .vf-flip-inner,
+    .vf-instrument-grid .vf-flip-face {
+      min-height: 19rem;
     }
   }
 </style>
