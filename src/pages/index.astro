@@ -657,12 +657,20 @@ const faqSchema = {
     </section>
 
     <section class="vf-section vf-founder" id="about">
-      <div class="vf-founder-photo">
-        <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/me-2ieLApt9JZN5dboF3DJ5nTz2QRXlU3.png"
-          alt="Founder of Vridhikaa Finserv"
-          loading="lazy"
-        />
+      <div class="vf-founder-pinup">
+        <div class="vf-founder-photo">
+          <span class="vf-pinup-kicker">The person behind the plan</span>
+          <img
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/me-2ieLApt9JZN5dboF3DJ5nTz2QRXlU3.png"
+            alt="Sandeep Srivastava, founder of Vridhikaa Finserv"
+            loading="lazy"
+          />
+          <span class="vf-pinup-seal" aria-hidden="true">VF</span>
+        </div>
+        <div class="vf-founder-identity">
+          <strong>Sandeep Srivastava</strong>
+          <span>AMFI Registered · ARN-289896</span>
+        </div>
       </div>
       <div class="vf-founder-copy">
         <p class="vf-kicker">About Vridhikaa</p><h2>A steady voice for<br /><em>important decisions.</em></h2><p>
@@ -1441,18 +1449,99 @@ const faqSchema = {
     gap: clamp(2rem, 7vw, 7rem);
     align-items: center;
   }
+  .vf-founder-pinup {
+    width: min(100%, 430px);
+    transform: rotate(-2deg);
+  }
   .vf-founder-photo {
+    position: relative;
     display: grid;
-    place-items: center;
-    min-height: 320px;
-    background: #f1ede3;
+    place-items: end center;
+    min-height: 380px;
     overflow: hidden;
+    border: 1px solid rgba(203, 169, 96, 0.58);
+    background: linear-gradient(145deg, #173c50 0%, #102d4d 68%, #245b51 100%);
+    box-shadow:
+      0 1.5rem 3rem rgba(16, 45, 77, 0.18),
+      inset 0 0 0 0.6rem rgba(203, 169, 96, 0.08);
+  }
+  .vf-founder-photo::before {
+    content: '';
+    position: absolute;
+    inset: 1.1rem;
+    border: 1px solid rgba(241, 207, 134, 0.42);
+    pointer-events: none;
+  }
+  .vf-founder-photo::after {
+    content: '';
+    position: absolute;
+    width: 15rem;
+    height: 15rem;
+    top: -5rem;
+    right: -4rem;
+    border: 1px solid rgba(241, 207, 134, 0.25);
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 1.5rem rgba(241, 207, 134, 0.05),
+      0 0 0 3rem rgba(241, 207, 134, 0.04);
+    pointer-events: none;
   }
   .vf-founder-photo img {
-    width: min(100%, 380px);
+    position: relative;
+    z-index: 1;
+    width: min(100%, 390px);
     height: 380px;
     object-fit: contain;
     display: block;
+    filter: drop-shadow(0 1rem 1rem rgba(0, 0, 0, 0.24));
+  }
+  .vf-pinup-kicker {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 2;
+    color: #f1cf86;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .vf-pinup-seal {
+    position: absolute;
+    right: 1.8rem;
+    bottom: 1.8rem;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 3.3rem;
+    height: 3.3rem;
+    border: 1px solid #f1cf86;
+    border-radius: 50%;
+    color: #f1cf86;
+    font:
+      600 0.9rem Georgia,
+      serif;
+    letter-spacing: 0.08em;
+  }
+  .vf-founder-identity {
+    display: grid;
+    gap: 0.25rem;
+    padding: 1.15rem 1.35rem 1.25rem;
+    border: 1px solid rgba(203, 169, 96, 0.58);
+    border-top: 0;
+    background: #f1ede3;
+    box-shadow: 0 0.9rem 1.8rem rgba(16, 45, 77, 0.12);
+  }
+  .vf-founder-identity strong {
+    color: var(--navy);
+    font:
+      500 clamp(1.1rem, 2vw, 1.5rem) / 1.1 Georgia,
+      serif;
+  }
+  .vf-founder-identity span {
+    color: var(--emerald);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
   .vf-founder-copy {
     max-width: 600px;
@@ -1927,11 +2016,18 @@ const faqSchema = {
       grid-template-columns: 1fr;
       gap: 2rem;
     }
+    .vf-founder-pinup {
+      width: 100%;
+      transform: none;
+    }
     .vf-founder-photo {
-      min-height: 260px;
+      min-height: 320px;
     }
     .vf-founder-photo img {
       height: 300px;
+    }
+    .vf-founder-identity {
+      padding: 1rem;
     }
     .vf-calc-extra {
       grid-template-columns: 1fr;
