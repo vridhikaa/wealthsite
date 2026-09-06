@@ -8,6 +8,12 @@
 
 @theme {
   --color-primary: var(--aw-color-primary);
+  --color-wealth-navy: #102d4d;
+  --color-wealth-emerald: #245b51;
+  --color-wealth-champagne: #cba960;
+  --color-wealth-ivory: #f7f3ea;
+  --color-wealth-sand: #e9e4d9;
+  --font-display: Georgia, 'Times New Roman', serif;
   --color-secondary: var(--aw-color-secondary);
   --color-accent: var(--aw-color-accent);
   --color-default: var(--aw-color-text-default);
