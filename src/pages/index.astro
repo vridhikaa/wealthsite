@@ -825,7 +825,13 @@ const faqSchema = {
     </div><div>
       <span class="vf-footer-label">Connect</span><a href="mailto:contact@vridhikaa.com">contact@vridhikaa.com</a><a
         href="tel:+912240000000">+91 9105523719</a
-      ><a href="#contact">Mumbai · Bengaluru · Delhi</a>
+      ><a
+        class="vf-write-link"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSdQUp2f4-5Ucyr0YZOWNMrlGyJmuWqu0Ud5Whvye-Pcv6tWpw/viewform?usp=publish-editor"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Write to Vridhikaa Finserv">Write to us <span aria-hidden="true">↗</span></a
+      >
     </div><div>
       <span class="vf-footer-label">Important</span><a href="#disclosures">Disclosures</a><a href="#disclosures"
         >Privacy</a
@@ -2202,6 +2208,23 @@ const faqSchema = {
   }
   .vf-footer a:hover {
     color: var(--gold);
+  }
+  .vf-footer .vf-write-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    width: fit-content;
+    color: var(--navy);
+    font-weight: 600;
+    transition:
+      color 180ms ease,
+      gap 180ms ease;
+  }
+  .vf-footer .vf-write-link:hover,
+  .vf-footer .vf-write-link:focus-visible {
+    gap: 0.7rem;
+    color: var(--gold);
+    outline: none;
   }
   .vf-compliance-copy {
     grid-column: 1/-1;
