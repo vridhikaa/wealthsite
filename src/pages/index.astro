@@ -1,398 +1,1199 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
-
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'Vridhikaa Finserv | Intentional Wealth, Built for the Long Term',
+  description:
+    'Independent wealth guidance across mutual funds, fixed income, insurance and alternative investments for families, founders and institutions.',
   ignoreTitleTemplate: true,
 };
+
+const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7gEWxXc5BbXARFLxde5NYhDc0EkdVR.png';
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
-  <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-      { text: 'Learn more', href: '#features' },
-    ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
-  >
-    <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white"> Astro v7</span> + Tailwind CSS
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro v7 +
-        Tailwind CSS v4.</span
+  <main class="vf-shell">
+    <div class="vf-topline">
+      <span>Independent wealth advisory</span><span>SEBI | AMFI | IRDAI aligned practice</span>
+    </div>
+    <header class="vf-header" id="site-header">
+      <a class="vf-brand" href="#top" aria-label="Vridhikaa Finserv home"
+        ><img src={logoUrl} alt="Vridhikaa Finserv" /></a
       >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages & Blogs.
-    </Fragment>
-  </Hero>
+      <nav class="vf-nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="#approach">Our approach</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#tools">Investor tools</a>
+        <a href="#insights">Insights</a>
+      </nav>
+      <div class="vf-header-actions">
+        <a class="vf-text-link hide-mobile" href="#contact">Talk to an advisor <span>↗</span></a><button
+          class="vf-menu"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav">Menu <span>＋</span></button>
+      </div>
+    </header>
 
-  <!-- Note Widget ******************* -->
+    <section class="vf-hero" id="top">
+      <div class="vf-hero-copy">
+        <p class="vf-kicker">Wealth, with a point of view.</p>
+        <h1>Make your money<br /><em>mean more.</em></h1>
+        <p class="vf-lead">
+          Thoughtful advice for the capital you have built — and the life, legacy and freedom it is meant to support.
+        </p>
+        <div class="vf-hero-actions">
+          <a class="vf-button vf-button-dark" href="#contact">Begin a conversation <span>↗</span></a><a
+            class="vf-text-link"
+            href="#approach">Discover our approach <span>↓</span></a>
+        </div>
+      </div>
+      <div class="vf-hero-art" aria-label="Vridhikaa Finserv signature mark">
+        <div class="vf-art-ring"></div><div class="vf-art-word">V</div><div class="vf-art-caption">
+          Clarity in every direction<br /><span>Since 2015 · India</span>
+        </div>
+      </div>
+    </section>
 
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
+    <section class="vf-trustbar">
+      <div><strong>₹ 2,500 Cr+</strong><span>Assets guided</span></div><div>
+        <strong>1,200+</strong><span>Families & institutions</span>
+      </div><div><strong>11 years</strong><span>Of considered advice</span></div><p>
+        Built on trust.<br />Measured in time.
+      </p>
+    </section>
 
-  <!-- Features Widget *************** -->
+    <section class="vf-section vf-approach" id="approach">
+      <div class="vf-section-intro">
+        <p class="vf-kicker">The Vridhikaa standard</p><h2>Less noise.<br /><em>More conviction.</em></h2>
+      </div><div class="vf-approach-body">
+        <p class="vf-big-copy">
+          We believe wealth management is not about chasing what is next. It is about understanding what matters,
+          structuring what you have, and staying the course with an experienced partner beside you.
+        </p><div class="vf-principles">
+          <article>
+            <span>01</span><h3>Listen deeply</h3><p>
+              Your goals, your context, your definition of enough. Every plan starts with the questions that matter.
+            </p>
+          </article><article>
+            <span>02</span><h3>Build deliberately</h3><p>
+              Evidence-led portfolios across asset classes, designed around your horizon — not the headlines.
+            </p>
+          </article><article>
+            <span>03</span><h3>Stay accountable</h3><p>
+              Clear communication, disciplined reviews and no product-first incentives. Just advice you can trust.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <Features
-    id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023, 2024 and 2025."
-    items={[
-      {
-        title: 'Astro + Tailwind CSS Integration',
-        description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility. Now powered by Tailwind CSS v4.',
-        icon: 'tabler:brand-tailwind',
-      },
-      {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS v4 ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
-      },
-      {
-        title: 'Best Practices',
-        description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
-      },
-      {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
-      },
-    ]}
-  />
+    <section class="vf-section vf-solutions" id="solutions">
+      <div class="vf-section-heading">
+        <div><p class="vf-kicker">Our solutions</p><h2>A wider lens<br /><em>on wealth.</em></h2></div><p>
+          One partner across the moving parts of your financial life — with the depth to go specialist when it counts.
+        </p>
+      </div><div class="vf-service-grid">
+        <article class="vf-service vf-service-featured">
+          <span class="vf-service-no">01 / CORE</span><h3>Mutual funds<br /><em>& portfolio design</em></h3><p>
+            Goal-led allocation across equity, debt and hybrid strategies. Curated with patience, monitored with
+            discipline.
+          </p><a href="#contact">Explore portfolios <span>↗</span></a>
+        </article><article class="vf-service">
+          <span class="vf-service-no">02 / STABILITY</span><h3>Fixed income<br /><em>& bonds</em></h3><p>
+            Tax-aware income solutions, from government securities and target maturity funds to carefully selected
+            corporate bonds.
+          </p><a href="#tools">See the universe <span>↗</span></a>
+        </article><article class="vf-service">
+          <span class="vf-service-no">03 / PROTECTION</span><h3>Insurance<br /><em>& risk cover</em></h3><p>
+            Protection designed around people, liabilities and the life you want to keep building.
+          </p><a href="#contact">Protect what matters <span>↗</span></a>
+        </article><article class="vf-service">
+          <span class="vf-service-no">04 / ALTERNATIVES</span><h3>PMS, AIF<br /><em>& structured notes</em></h3><p>
+            Access to differentiated ideas for eligible investors, with suitability and risk at the centre.
+          </p><a href="#contact">Explore alternatives <span>↗</span></a>
+        </article>
+      </div>
+    </section>
 
-  <!-- Content Widget **************** -->
+    <section class="vf-section vf-tools" id="tools">
+      <div class="vf-section-heading">
+        <div><p class="vf-kicker">Investor tools</p><h2>Numbers become<br /><em>useful here.</em></h2></div><p>
+          Start with a simple view. Then let a conversation add the nuance no calculator can.
+        </p>
+      </div><div class="vf-tool-layout">
+        <div class="vf-calculator">
+          <div class="vf-tool-tabs" role="tablist">
+            <button class="is-active" data-calc="sip" role="tab">Monthly SIP</button><button
+              data-calc="lumpsum"
+              role="tab">Lumpsum</button>
+          </div><div class="vf-calc-row">
+            <label
+              >Monthly investment <output id="investment-value">₹ 25,000</output><input
+                id="investment"
+                type="range"
+                min="5000"
+                max="200000"
+                step="5000"
+                value="25000"
+              /></label
+            ><label
+              >Time horizon <output id="years-value">10 years</output><input
+                id="years"
+                type="range"
+                min="1"
+                max="30"
+                step="1"
+                value="10"
+              /></label
+            ><label
+              >Illustrative return <output id="rate-value">12%</output><input
+                id="rate"
+                type="range"
+                min="6"
+                max="18"
+                step="1"
+                value="12"
+              /></label>
+          </div><div class="vf-calc-result">
+            <div><span>Estimated value*</span><strong id="future-value">₹ 58.1 L</strong></div><div>
+              <span>Your investment</span><strong id="principal-value">₹ 30.0 L</strong>
+            </div><div><span>Illustrative growth</span><strong id="growth-value">₹ 28.1 L</strong></div>
+          </div><p class="vf-fineprint">
+            *Illustrative only. Actual returns are market-linked and may vary. This is not investment advice or a return
+            guarantee.
+          </p>
+        </div><div class="vf-tool-note">
+          <span class="vf-note-mark">↗</span><p>Good planning begins with a useful first estimate.</p><a
+            href="#contact"
+            class="vf-text-link">Get a personalised view <span>↗</span></a>
+        </div>
+      </div>
+    </section>
 
-  <Content
-    isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
-    items={[
-      {
-        title: 'Built on top of Astro v7',
-        description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
-      },
-      {
-        title: 'Styled using Tailwind CSS v4',
-        description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
-      },
-      {
-        title: 'Cross-browser compatibility',
-        description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
-    </Fragment>
+    <section class="vf-section vf-matrix">
+      <div class="vf-section-heading">
+        <div>
+          <p class="vf-kicker">A considered universe</p><h2>Choose the right<br /><em>kind of certainty.</em></h2>
+        </div><p>Different instruments solve different problems. The right answer is often a blend.</p>
+      </div><div class="vf-matrix-tabs" role="tablist">
+        <button class="is-active" data-matrix="growth">Growth</button><button data-matrix="stability">Stability</button
+        ><button data-matrix="protection">Protection</button>
+      </div><div class="vf-matrix-table" id="matrix-content">
+        <div class="vf-table-head">
+          <span>Instrument</span><span>Role</span><span>Best considered for</span><span>Starting point</span>
+        </div><div class="vf-table-row">
+          <strong>Equity mutual funds</strong><span>Long-term growth</span><span>Goals 7+ years away</span><b
+            >₹ 5,000 SIP</b>
+        </div><div class="vf-table-row">
+          <strong>Index funds</strong><span>Core market exposure</span><span>Simple, diversified allocation</span><b
+            >₹ 500 SIP</b>
+        </div><div class="vf-table-row">
+          <strong>Flexicap funds</strong><span>Active allocation</span><span>Long-term wealth creation</span><b
+            >₹ 1,000 SIP</b>
+        </div>
+      </div>
+    </section>
 
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
+    <section class="vf-section vf-compare" id="insights">
+      <div class="vf-compare-copy">
+        <p class="vf-kicker">A clearer comparison</p><h2>Performance is a<br /><em>piece of the story.</em></h2><p>
+          When we compare funds, we look past a single return number: consistency, drawdowns, cost, process and how a
+          fund earns its place in your portfolio.
+        </p><a href="#contact" class="vf-text-link">Speak with our research team <span>↗</span></a>
+      </div><div class="vf-fund-card">
+        <div class="vf-fund-tabs">
+          <button class="is-active" data-fund="one">Parag Parikh Flexi Cap</button><button data-fund="two"
+            >HDFC Balanced Advantage</button>
+        </div><div class="vf-fund-title">
+          <span>Illustrative snapshot</span><h3 id="fund-name">Parag Parikh Flexi Cap</h3><p id="fund-meta">
+            Equity · Flexicap · Direct Growth
+          </p>
+        </div><div class="vf-bars">
+          <div><span>1Y</span><i style="height:38%"></i><b>18.4%</b></div><div>
+            <span>3Y</span><i style="height:64%"></i><b>21.1%</b>
+          </div><div><span>5Y</span><i style="height:82%"></i><b>22.8%</b></div><div>
+            <span>Since launch</span><i style="height:100%"></i><b>20.6%</b>
+          </div>
+        </div><p class="vf-fineprint">
+          Past performance is not indicative of future results. Data shown for illustration only.
+        </p>
+      </div>
+    </section>
 
-  <!-- Content Widget **************** -->
+    <section class="vf-contact" id="contact">
+      <div>
+        <p class="vf-kicker">A conversation worth having</p><h2>Bring us your<br /><em>big picture.</em></h2>
+      </div><div>
+        <p>
+          Whether you are investing for your family, your business or your next chapter, the first step is a thoughtful
+          conversation.
+        </p><button class="vf-button vf-button-light" id="portal-open" type="button"
+          >Request a private consultation <span>↗</span></button
+        ><small>Typically replies within one business day.</small>
+      </div>
+    </section>
 
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
+    <footer class="vf-footer">
+      <div class="vf-footer-brand">
+        <img src={logoUrl} alt="Vridhikaa Finserv" /><p>Intentional wealth, built for the long term.</p>
+      </div><div>
+        <span class="vf-footer-label">Navigate</span><a href="#approach">Our approach</a><a href="#solutions"
+          >Solutions</a
+        ><a href="#tools">Investor tools</a>
+      </div><div>
+        <span class="vf-footer-label">Connect</span><a href="mailto:hello@vridhikaafinserv.com"
+          >hello@vridhikaafinserv.com</a
+        ><a href="tel:+912240000000">+91 22 4000 0000</a><a href="#contact">Mumbai · Bengaluru · Delhi</a>
+      </div><div>
+        <span class="vf-footer-label">Important</span><a href="#disclosures">Disclosures</a><a href="#disclosures"
+          >Privacy</a
+        ><a href="#disclosures">Complaints</a>
+      </div><div class="vf-footer-bottom" id="disclosures">
+        <span>© 2026 Vridhikaa Finserv. All rights reserved.</span><span
+          >Mutual fund investments are subject to market risks. Read all scheme related documents carefully.</span>
+      </div>
+    </footer>
 
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="Get your dream website up and running in no time with AstroWind."
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Download</span>',
-        description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
-      },
-      {
-        title: 'Ready!',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS v4"
-    tagline="Components"
-    items={[
-      {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
-
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro v7 + Tailwind CSS v4.
-                        Astro is a very interesting technology. Thanks.
-                `}
-  />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
-      },
-      {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
-      },
-      {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
-      },
-      {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
-      },
-    ]}
-  />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
-    ]}
-  />
-
-  <!-- CallToAction Widget *********** -->
-
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
-    </Fragment>
-  </CallToAction>
+    <dialog class="vf-dialog" id="portal-dialog">
+      <button class="vf-dialog-close" id="portal-close" type="button" aria-label="Close consultation form">×</button><p
+        class="vf-kicker"
+      >
+        Begin a conversation
+      </p><h2>Let’s make a<br /><em>plan together.</em></h2><form id="consultation-form">
+        <label>Your name<input required name="name" placeholder="Full name" /></label><label
+          >How can we help?<select name="interest"
+            ><option>Build or review my portfolio</option><option>Protect my family and business</option><option
+              >Explore alternatives</option
+            ><option>Plan for a major life goal</option></select
+          ></label
+        ><label>Email address<input required type="email" name="email" placeholder="you@example.com" /></label><button
+          class="vf-button vf-button-dark"
+          type="submit">Send enquiry <span>↗</span></button
+        ><p class="vf-fineprint" id="form-status">
+          Your details stay private and are only used to respond to your enquiry.
+        </p>
+      </form>
+    </dialog>
+  </main>
 </Layout>
+
+<style>
+  :global(html) {
+    scroll-behavior: smooth;
+    background: #f4f1e9;
+  }
+  :global(body) {
+    background: #f4f1e9 !important;
+    color: #102d4d !important;
+    font-family: var(--font-inter), Arial, sans-serif;
+  }
+  :global(*) {
+    box-sizing: border-box;
+  }
+  .vf-shell {
+    --navy: #102d4d;
+    --ink: #173b5f;
+    --gold: #b49358;
+    --emerald: #356b5f;
+    --ivory: #f4f1e9;
+    --line: rgba(16, 45, 77, 0.18);
+    min-height: 100vh;
+    background: var(--ivory);
+    overflow: hidden;
+  }
+  .vf-topline,
+  .vf-header,
+  .vf-hero,
+  .vf-section,
+  .vf-trustbar,
+  .vf-contact,
+  .vf-footer {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding-left: clamp(1.25rem, 5vw, 4.5rem);
+    padding-right: clamp(1.25rem, 5vw, 4.5rem);
+  }
+  .vf-topline {
+    max-width: none;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    color: var(--emerald);
+    border-bottom: 1px solid var(--line);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .vf-header {
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .vf-brand img {
+    width: 142px;
+    height: auto;
+    display: block;
+    mix-blend-mode: multiply;
+  }
+  .vf-nav {
+    display: flex;
+    gap: 2.2rem;
+    margin-left: auto;
+  }
+  .vf-nav a,
+  .vf-text-link {
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+  }
+  .vf-nav a:hover,
+  .vf-text-link:hover {
+    color: var(--gold);
+  }
+  .vf-text-link span,
+  .vf-button span,
+  .vf-service a span {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+  }
+  .vf-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .vf-menu {
+    border: 0;
+    background: none;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    cursor: pointer;
+    display: none;
+  }
+  .vf-menu span {
+    font-size: 1.1rem;
+    margin-left: 0.3rem;
+  }
+  .vf-hero {
+    min-height: 620px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .vf-kicker {
+    margin: 0 0 1.4rem;
+    color: var(--emerald);
+    font-size: 0.67rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    letter-spacing: -0.055em;
+  }
+  h1 {
+    font-size: clamp(3.8rem, 7vw, 7rem);
+    line-height: 0.9;
+    margin-bottom: 2rem;
+  }
+  h1 em,
+  h2 em,
+  h3 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .vf-lead {
+    max-width: 430px;
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .vf-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .vf-button {
+    border: 0;
+    padding: 1.05rem 1.4rem;
+    font: inherit;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease;
+  }
+  .vf-button:hover {
+    transform: translateY(-2px);
+  }
+  .vf-button-dark {
+    background: var(--navy);
+    color: var(--ivory);
+  }
+  .vf-button-light {
+    background: var(--ivory);
+    color: var(--navy);
+  }
+  .vf-hero-art {
+    min-height: 470px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: var(--navy);
+    color: var(--ivory);
+  }
+  .vf-art-ring {
+    width: 340px;
+    height: 340px;
+    border: 1px solid rgba(244, 241, 233, 0.4);
+    border-radius: 50%;
+    position: absolute;
+  }
+  .vf-art-ring:after {
+    content: '';
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(180, 147, 88, 0.7);
+    border-radius: 50%;
+  }
+  .vf-art-word {
+    font-family: Georgia, serif;
+    font-size: 20rem;
+    line-height: 1;
+    color: var(--gold);
+    transform: translateY(-1rem);
+    z-index: 1;
+  }
+  .vf-art-caption {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    line-height: 1.7;
+    text-transform: uppercase;
+    color: #d9d3c7;
+  }
+  .vf-art-caption span {
+    color: var(--gold);
+  }
+  .vf-trustbar {
+    display: flex;
+    align-items: center;
+    gap: clamp(2rem, 7vw, 6rem);
+    padding-top: 2.8rem;
+    padding-bottom: 2.8rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .vf-trustbar div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .vf-trustbar strong {
+    font-family: Georgia, serif;
+    font-size: 1.65rem;
+    font-weight: 400;
+    color: var(--navy);
+  }
+  .vf-trustbar span,
+  .vf-trustbar p {
+    margin: 0;
+    font-size: 0.62rem;
+    color: var(--emerald);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .vf-trustbar p {
+    margin-left: auto;
+    line-height: 1.6;
+    color: var(--gold);
+  }
+  .vf-section {
+    padding-top: clamp(5rem, 10vw, 9rem);
+    padding-bottom: clamp(5rem, 10vw, 9rem);
+  }
+  .vf-approach {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(3rem, 8vw, 9rem);
+  }
+  h2 {
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    line-height: 0.96;
+    margin-bottom: 0;
+  }
+  .vf-big-copy {
+    font-family: Georgia, serif;
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+    line-height: 1.4;
+    max-width: 680px;
+    color: var(--ink);
+  }
+  .vf-principles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .vf-principles article span,
+  .vf-service-no {
+    color: var(--gold);
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+  }
+  .vf-principles h3 {
+    font-size: 1.6rem;
+    margin: 0.9rem 0 0.7rem;
+    letter-spacing: -0.035em;
+  }
+  .vf-principles p,
+  .vf-service p {
+    color: var(--ink);
+    font-size: 0.87rem;
+    line-height: 1.65;
+  }
+  .vf-solutions {
+    background: var(--navy);
+    color: var(--ivory);
+    max-width: none;
+    padding-left: max(calc((100vw - 1240px) / 2 + 4.5rem), 1.25rem);
+    padding-right: max(calc((100vw - 1240px) / 2 + 4.5rem), 1.25rem);
+  }
+  .vf-solutions .vf-kicker,
+  .vf-solutions .vf-section-heading p,
+  .vf-solutions .vf-service p {
+    color: #b9c7c1;
+  }
+  .vf-solutions h2,
+  .vf-solutions .vf-service h3 {
+    color: var(--ivory);
+  }
+  .vf-section-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+  .vf-section-heading > p {
+    max-width: 320px;
+    line-height: 1.7;
+    font-size: 0.9rem;
+    color: var(--ink);
+    margin: 0;
+  }
+  .vf-service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(244, 241, 233, 0.28);
+    border-left: 1px solid rgba(244, 241, 233, 0.28);
+  }
+  .vf-service {
+    min-height: 370px;
+    padding: 1.7rem;
+    border-right: 1px solid rgba(244, 241, 233, 0.28);
+    border-bottom: 1px solid rgba(244, 241, 233, 0.28);
+    display: flex;
+    flex-direction: column;
+  }
+  .vf-service h3 {
+    font-size: 2rem;
+    line-height: 1.05;
+    margin: 3.5rem 0 1.1rem;
+  }
+  .vf-service p {
+    flex: 1;
+  }
+  .vf-service a {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .vf-service-featured {
+    background: var(--emerald);
+  }
+  .vf-tools {
+    background: #e9e4d9;
+    max-width: none;
+    padding-left: max(calc((100vw - 1240px) / 2 + 4.5rem), 1.25rem);
+    padding-right: max(calc((100vw - 1240px) / 2 + 4.5rem), 1.25rem);
+  }
+  .vf-tool-layout {
+    display: grid;
+    grid-template-columns: 1.65fr 0.8fr;
+    gap: 2rem;
+  }
+  .vf-calculator {
+    background: var(--ivory);
+    padding: 2rem;
+  }
+  .vf-tool-tabs,
+  .vf-matrix-tabs,
+  .vf-fund-tabs {
+    display: flex;
+    gap: 1.4rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .vf-tool-tabs button,
+  .vf-matrix-tabs button,
+  .vf-fund-tabs button {
+    border: 0;
+    background: transparent;
+    color: var(--emerald);
+    padding: 0 0 1rem;
+    font: inherit;
+    font-size: 0.67rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .vf-tool-tabs button.is-active,
+  .vf-matrix-tabs button.is-active,
+  .vf-fund-tabs button.is-active {
+    color: var(--navy);
+    border-bottom: 2px solid var(--gold);
+  }
+  .vf-calc-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 2rem 0;
+  }
+  .vf-calc-row label {
+    color: var(--emerald);
+    font-size: 0.67rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .vf-calc-row output {
+    display: block;
+    color: var(--navy);
+    font-family: Georgia, serif;
+    font-size: 1.25rem;
+    letter-spacing: 0;
+    margin: 0.7rem 0 1rem;
+    text-transform: none;
+  }
+  input[type='range'] {
+    width: 100%;
+    accent-color: var(--gold);
+  }
+  .vf-calc-result {
+    display: flex;
+    gap: 2rem;
+    border-top: 1px solid var(--line);
+    padding-top: 1.5rem;
+  }
+  .vf-calc-result div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .vf-calc-result span,
+  .vf-fund-title span {
+    font-size: 0.62rem;
+    color: var(--emerald);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .vf-calc-result strong {
+    font-family: Georgia, serif;
+    font-size: 1.45rem;
+    font-weight: 400;
+  }
+  .vf-fineprint {
+    font-size: 0.65rem;
+    line-height: 1.5;
+    color: #6d786f;
+    margin: 1.5rem 0 0;
+  }
+  .vf-tool-note {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem 0 2rem 2rem;
+    border-left: 1px solid var(--line);
+  }
+  .vf-note-mark {
+    font-size: 3rem;
+    color: var(--gold);
+  }
+  .vf-tool-note p {
+    font-family: Georgia, serif;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    max-width: 230px;
+  }
+  .vf-matrix-tabs {
+    margin-bottom: 2rem;
+  }
+  .vf-matrix-table {
+    border-top: 1px solid var(--line);
+  }
+  .vf-table-head,
+  .vf-table-row {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1.2fr 0.8fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.15rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.78rem;
+  }
+  .vf-table-head {
+    color: var(--emerald);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .vf-table-row strong {
+    font-family: Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+  .vf-table-row span {
+    color: var(--ink);
+  }
+  .vf-table-row b {
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .vf-compare {
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: clamp(3rem, 8vw, 9rem);
+    align-items: center;
+    border-top: 1px solid var(--line);
+  }
+  .vf-compare-copy > p:not(.vf-kicker) {
+    max-width: 400px;
+    line-height: 1.7;
+    color: var(--ink);
+    font-size: 0.9rem;
+    margin: 2rem 0;
+  }
+  .vf-fund-card {
+    background: #e9e4d9;
+    padding: 2rem;
+  }
+  .vf-fund-tabs {
+    gap: 1.2rem;
+    overflow: auto;
+  }
+  .vf-fund-title {
+    padding: 2.5rem 0 1.5rem;
+  }
+  .vf-fund-title h3 {
+    font-size: 2rem;
+    margin: 0.7rem 0 0.35rem;
+  }
+  .vf-fund-title p {
+    color: var(--emerald);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .vf-bars {
+    height: 190px;
+    display: flex;
+    align-items: end;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--line);
+    padding: 0 1rem;
+  }
+  .vf-bars div {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    gap: 0.5rem;
+  }
+  .vf-bars i {
+    display: block;
+    width: 100%;
+    max-width: 55px;
+    background: var(--emerald);
+  }
+  .vf-bars b {
+    color: var(--navy);
+    font:
+      400 1rem Georgia,
+      serif;
+  }
+  .vf-bars span {
+    font-size: 0.6rem;
+    color: var(--emerald);
+    text-transform: uppercase;
+  }
+  .vf-contact {
+    max-width: none;
+    background: var(--emerald);
+    color: var(--ivory);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    padding-left: max(calc((100vw - 1240px) / 2 + 4.5rem), 1.25rem);
+    padding-right: max(calc((100vw - 1240px) / 2 + 4.5rem), 1.25rem);
+  }
+  .vf-contact .vf-kicker {
+    color: #c2d2c6;
+  }
+  .vf-contact h2 {
+    color: var(--ivory);
+  }
+  .vf-contact > div:last-child {
+    max-width: 380px;
+    align-self: end;
+  }
+  .vf-contact p:not(.vf-kicker) {
+    color: #d2ddd6;
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+  .vf-contact small {
+    display: block;
+    margin-top: 1rem;
+    color: #c2d2c6;
+    font-size: 0.68rem;
+  }
+  .vf-footer {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.4fr 1fr;
+    gap: 2rem;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    position: relative;
+  }
+  .vf-footer-brand img {
+    width: 128px;
+    mix-blend-mode: multiply;
+  }
+  .vf-footer-brand p {
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    max-width: 170px;
+    margin-top: 1.2rem;
+  }
+  .vf-footer-label {
+    color: var(--gold);
+    display: block;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .vf-footer a {
+    display: block;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.72rem;
+    margin-bottom: 0.8rem;
+  }
+  .vf-footer a:hover {
+    color: var(--gold);
+  }
+  .vf-footer-bottom {
+    grid-column: 1/-1;
+    border-top: 1px solid var(--line);
+    padding-top: 1.2rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: #6d786f;
+    font-size: 0.6rem;
+    line-height: 1.5;
+  }
+  .vf-dialog {
+    border: 0;
+    max-width: 520px;
+    width: calc(100% - 2rem);
+    padding: 3rem;
+    background: var(--ivory);
+    color: var(--navy);
+    box-shadow: 0 1rem 5rem rgba(16, 45, 77, 0.3);
+  }
+  .vf-dialog::backdrop {
+    background: rgba(16, 45, 77, 0.6);
+  }
+  .vf-dialog h2 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+  }
+  .vf-dialog-close {
+    border: 0;
+    background: none;
+    color: var(--navy);
+    font-size: 2rem;
+    position: absolute;
+    right: 1rem;
+    top: 0.8rem;
+    cursor: pointer;
+  }
+  .vf-dialog label {
+    display: block;
+    color: var(--emerald);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .vf-dialog input,
+  .vf-dialog select {
+    display: block;
+    width: 100%;
+    margin-top: 0.5rem;
+    border: 1px solid var(--line);
+    background: transparent;
+    padding: 0.9rem;
+    color: var(--navy);
+    font: inherit;
+  }
+  .vf-dialog .vf-button {
+    margin-top: 1rem;
+  }
+  @media (max-width: 800px) {
+    .vf-topline span:last-child {
+      display: none;
+    }
+    .vf-header {
+      height: 88px;
+    }
+    .vf-nav {
+      display: none;
+      position: absolute;
+      top: 88px;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      padding: 1.5rem;
+      background: var(--ivory);
+      flex-direction: column;
+      gap: 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .vf-nav.is-open {
+      display: flex;
+    }
+    .vf-menu {
+      display: block;
+    }
+    .hide-mobile {
+      display: none;
+    }
+    .vf-hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+    .vf-hero-art {
+      min-height: 330px;
+    }
+    .vf-art-ring {
+      width: 230px;
+      height: 230px;
+    }
+    .vf-art-word {
+      font-size: 13rem;
+    }
+    .vf-trustbar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+    }
+    .vf-trustbar p {
+      margin: 0;
+      grid-column: 1/-1;
+    }
+    .vf-approach,
+    .vf-compare,
+    .vf-contact {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .vf-principles,
+    .vf-service-grid {
+      grid-template-columns: 1fr;
+    }
+    .vf-service {
+      min-height: 280px;
+    }
+    .vf-section-heading {
+      display: block;
+    }
+    .vf-section-heading > p {
+      margin-top: 2rem;
+    }
+    .vf-tool-layout {
+      grid-template-columns: 1fr;
+    }
+    .vf-tool-note {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+      padding: 2rem 0 0;
+      gap: 2rem;
+    }
+    .vf-calc-row {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+    .vf-table-head {
+      display: none;
+    }
+    .vf-table-row {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+    }
+    .vf-table-row strong {
+      grid-column: 1/-1;
+    }
+    .vf-footer {
+      grid-template-columns: 1fr 1fr;
+    }
+    .vf-footer-brand {
+      grid-column: 1/-1;
+    }
+    .vf-footer-bottom {
+      display: block;
+    }
+    .vf-footer-bottom span {
+      display: block;
+      margin-bottom: 0.7rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+    .vf-button {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const money = (value: number) => `₹ ${(value / 100000).toFixed(1)} L`;
+  const investment = document.querySelector<HTMLInputElement>('#investment');
+  const years = document.querySelector<HTMLInputElement>('#years');
+  const rate = document.querySelector<HTMLInputElement>('#rate');
+  const investmentValue = document.querySelector<HTMLOutputElement>('#investment-value');
+  const yearsValue = document.querySelector<HTMLOutputElement>('#years-value');
+  const rateValue = document.querySelector<HTMLOutputElement>('#rate-value');
+  const futureValue = document.querySelector<HTMLOutputElement>('#future-value');
+  const principalValue = document.querySelector<HTMLOutputElement>('#principal-value');
+  const growthValue = document.querySelector<HTMLOutputElement>('#growth-value');
+  const updateCalculator = () => {
+    if (
+      !investment ||
+      !years ||
+      !rate ||
+      !investmentValue ||
+      !yearsValue ||
+      !rateValue ||
+      !futureValue ||
+      !principalValue ||
+      !growthValue
+    )
+      return;
+    const monthly = Number(investment.value);
+    const horizon = Number(years.value);
+    const annualRate = Number(rate.value);
+    const monthlyRate = annualRate / 100 / 12;
+    const months = horizon * 12;
+    const future = monthly * (((1 + monthlyRate) ** months - 1) / monthlyRate) * (1 + monthlyRate);
+    const principal = monthly * months;
+    investmentValue.textContent = `₹ ${monthly.toLocaleString('en-IN')}`;
+    yearsValue.textContent = `${horizon} years`;
+    rateValue.textContent = `${annualRate}%`;
+    futureValue.textContent = money(future);
+    principalValue.textContent = money(principal);
+    growthValue.textContent = money(future - principal);
+  };
+  [investment, years, rate].forEach((control) => control?.addEventListener('input', updateCalculator));
+  updateCalculator();
+  const menu = document.querySelector('.vf-menu');
+  const nav = document.querySelector('.vf-nav');
+  menu?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('is-open');
+    menu.setAttribute('aria-expanded', String(open));
+  });
+  document.querySelectorAll('.vf-nav a').forEach((link) =>
+    link.addEventListener('click', () => {
+      nav?.classList.remove('is-open');
+      menu?.setAttribute('aria-expanded', 'false');
+    })
+  );
+  document.querySelectorAll('[data-matrix]').forEach((button) =>
+    button.addEventListener('click', () => {
+      document.querySelectorAll('[data-matrix]').forEach((item) => item.classList.remove('is-active'));
+      button.classList.add('is-active');
+    })
+  );
+  document.querySelectorAll<HTMLButtonElement>('[data-fund]').forEach((button) =>
+    button.addEventListener('click', () => {
+      document.querySelectorAll('[data-fund]').forEach((item) => item.classList.remove('is-active'));
+      button.classList.add('is-active');
+      const name = document.querySelector<HTMLElement>('#fund-name');
+      const meta = document.querySelector<HTMLElement>('#fund-meta');
+      if (!name || !meta) return;
+      if (button.dataset.fund === 'two') {
+        name.textContent = 'HDFC Balanced Advantage';
+        meta.textContent = 'Hybrid · Dynamic Asset Allocation · Direct Growth';
+      } else {
+        name.textContent = 'Parag Parikh Flexi Cap';
+        meta.textContent = 'Equity · Flexicap · Direct Growth';
+      }
+    })
+  );
+  const dialog = document.querySelector<HTMLDialogElement>('#portal-dialog');
+  document.querySelector('#portal-open')?.addEventListener('click', () => dialog?.showModal());
+  document.querySelector('#portal-close')?.addEventListener('click', () => dialog?.close());
+  document.querySelector('#consultation-form')?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const status = document.querySelector<HTMLElement>('#form-status');
+    if (status) {
+      status.textContent = 'Thank you. Your enquiry has been noted — our team will be in touch shortly.';
+      status.style.color = '#356b5f';
+    }
+  });
+</script>
