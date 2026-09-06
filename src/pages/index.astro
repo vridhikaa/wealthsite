@@ -58,7 +58,7 @@ const faqSchema = {
         <a href="#insights">Insights</a>
       </nav>
       <div class="vf-header-actions">
-        <a class="vf-text-link hide-mobile" href="#contact">Talk to an advisor <span>↗</span></a><button
+        <a class="vf-text-link hide-mobile" href="#contact">Get in touch <span>↗</span></a><button
           class="vf-menu"
           type="button"
           aria-expanded="false"
@@ -97,6 +97,35 @@ const faqSchema = {
       </div><div><strong>11 years</strong><span>Of considered advice</span></div><p>
         Built on trust.<br />Measured in time.
       </p>
+    </section>
+
+    <section class="vf-decision-desk" aria-label="Choose your next step">
+      <div class="vf-desk-intro">
+        <p class="vf-kicker">Your next useful step</p>
+        <h2>Start where the<br /><em>question is.</em></h2>
+      </div>
+      <div class="vf-desk-grid">
+        <a href="#tools" class="vf-desk-card"
+          ><span class="vf-desk-index">01</span><strong>What could I invest?</strong><small
+            >Use the SIP and lumpsum planner</small
+          ><span class="vf-desk-arrow" aria-hidden="true">↗</span></a
+        >
+        <a href="#instruments" class="vf-desk-card"
+          ><span class="vf-desk-index">02</span><strong>What should I understand?</strong><small
+            >Compare instruments in plain English</small
+          ><span class="vf-desk-arrow" aria-hidden="true">↗</span></a
+        >
+        <a href="#approach" class="vf-desk-card"
+          ><span class="vf-desk-index">03</span><strong>How should I begin?</strong><small
+            >See the Vridhikaa process</small
+          ><span class="vf-desk-arrow" aria-hidden="true">↗</span></a
+        >
+        <a href="#contact" class="vf-desk-card vf-desk-card-dark"
+          ><span class="vf-desk-index">04</span><strong>Can we talk it through?</strong><small
+            >Begin a considered conversation</small
+          ><span class="vf-desk-arrow" aria-hidden="true">↗</span></a
+        >
+      </div>
     </section>
 
     <section class="vf-section vf-approach" id="approach">
@@ -1061,6 +1090,94 @@ const faqSchema = {
   .vf-art-caption span {
     color: var(--gold);
   }
+  .vf-decision-desk {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.8fr) minmax(0, 2fr);
+    gap: 2rem;
+    align-items: stretch;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 2.25rem 2.5rem;
+    background: var(--ivory);
+    border-top: 1px solid rgba(16, 45, 77, 0.14);
+    border-bottom: 1px solid rgba(16, 45, 77, 0.14);
+  }
+  .vf-desk-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .vf-desk-intro h2 {
+    margin: 0.4rem 0 0;
+    color: var(--navy);
+    font:
+      500 clamp(1.8rem, 3vw, 3rem) / 0.98 Georgia,
+      serif;
+    letter-spacing: -0.04em;
+  }
+  .vf-desk-intro h2 em {
+    color: var(--emerald);
+    font-style: italic;
+  }
+  .vf-desk-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+  .vf-desk-card {
+    position: relative;
+    display: flex;
+    min-height: 10.5rem;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding: 1.1rem;
+    color: var(--navy);
+    border: 1px solid rgba(16, 45, 77, 0.16);
+    background: #fbf9f4;
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+  .vf-desk-card:hover,
+  .vf-desk-card:focus-visible {
+    transform: translateY(-0.3rem);
+    border-color: var(--gold);
+    box-shadow: 0 0.9rem 1.5rem rgba(16, 45, 77, 0.12);
+    outline: none;
+  }
+  .vf-desk-card-dark {
+    color: var(--ivory);
+    background: var(--navy);
+    border-color: var(--navy);
+  }
+  .vf-desk-index,
+  .vf-desk-arrow {
+    color: var(--gold);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+  }
+  .vf-desk-card strong {
+    margin-top: auto;
+    font:
+      500 1rem/1.15 Georgia,
+      serif;
+  }
+  .vf-desk-card small {
+    max-width: 15ch;
+    color: rgba(16, 45, 77, 0.66);
+    font-size: 0.68rem;
+    line-height: 1.4;
+  }
+  .vf-desk-card-dark small {
+    color: rgba(247, 243, 234, 0.68);
+  }
+  .vf-desk-arrow {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+  }
   .vf-trustbar {
     display: flex;
     align-items: center;
@@ -2009,6 +2126,13 @@ const faqSchema = {
     .vf-art-ring {
       width: 230px;
       height: 230px;
+    }
+    .vf-decision-desk {
+      grid-template-columns: 1fr;
+      padding: 2rem 1.25rem;
+    }
+    .vf-desk-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .vf-trustbar {
       display: grid;
