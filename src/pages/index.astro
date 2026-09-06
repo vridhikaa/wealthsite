@@ -283,6 +283,162 @@ const faqSchema = {
       </p>
     </section>
 
+    <section class="vf-section vf-practice" id="what-we-do">
+      <div class="vf-section-heading">
+        <div><p class="vf-kicker">What we do</p><h2>Advice with a<br /><em>human centre.</em></h2></div><p>
+          Tap any card to see how we make a complex money decision feel more considered, practical and yours.
+        </p>
+      </div>
+      <div class="vf-practice-grid">
+        {
+          [
+            [
+              '01',
+              'Goal planning',
+              'Turn life milestones into a clear, prioritised money map.',
+              'A plan starts with what you want your money to make possible — not with a product list.',
+            ],
+            [
+              '02',
+              'Cash-flow mapping',
+              'See what can be invested without making today feel tight.',
+              'We separate essentials, optional spending, reserves and investable surplus so the plan can breathe.',
+            ],
+            [
+              '03',
+              'Retirement design',
+              'Build income visibility for the years when work becomes optional.',
+              'We model contributions, time, inflation and withdrawal needs together, then keep the assumptions visible.',
+            ],
+            [
+              '04',
+              'Succession planning',
+              'Prepare wealth to move clearly and thoughtfully across generations.',
+              'Nomination, documentation, family conversations and ownership deserve the same care as allocation.',
+            ],
+            [
+              '05',
+              'Tax-aware structuring',
+              'Make tax a consideration, never the whole investment thesis.',
+              'We flag where tax treatment may change the outcome and ask you to confirm details with your tax adviser.',
+            ],
+            [
+              '06',
+              'Family governance',
+              'Create a shared language for money across a family.',
+              'Different generations can have different goals. A calm process helps everyone understand the why.',
+            ],
+          ].map(([number, title, front, back]) => (
+            <article class="vf-flip-card vf-practice-card" data-flip-card>
+              <button
+                class="vf-flip-inner"
+                type="button"
+                aria-pressed="false"
+                aria-label={`Show details about ${title}`}
+              >
+                <>
+                  <span class="vf-flip-face vf-flip-front">
+                    <>
+                      <span class="vf-card-tag">{number} / What we do</span>
+                      <strong>{title}</strong>
+                      <p>{front}</p>
+                      <span class="vf-card-hint">Tap to explore ↗</span>
+                    </>
+                  </span>
+                  <span class="vf-flip-face vf-flip-back">
+                    <>
+                      <span class="vf-card-tag">Our perspective</span>
+                      <strong>{title}</strong>
+                      <p>{back}</p>
+                      <span class="vf-card-hint">Tap to return ↺</span>
+                    </>
+                  </span>
+                </>
+              </button>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="vf-section vf-process" id="how-we-do">
+      <div class="vf-section-heading">
+        <div><p class="vf-kicker">How we do it</p><h2>A process that<br /><em>stays with you.</em></h2></div><p>
+          No black boxes. Each step has a reason, a conversation and a next action you can understand.
+        </p>
+      </div>
+      <div class="vf-practice-grid">
+        {
+          [
+            [
+              '07',
+              'Discovery',
+              'We listen first.',
+              'Your people, priorities, responsibilities and what keeps you awake become part of the brief.',
+            ],
+            [
+              '08',
+              'Diagnosis',
+              'We make the picture legible.',
+              'We review what you own, owe, earn and need — without judgement or jargon.',
+            ],
+            [
+              '09',
+              'Allocation',
+              'We give every rupee a role.',
+              'Growth, stability, protection and liquidity are balanced around your time horizon.',
+            ],
+            [
+              '10',
+              'Implementation',
+              'We make the next step doable.',
+              'A good plan is only useful when it can be implemented carefully and documented clearly.',
+            ],
+            [
+              '11',
+              'Review',
+              'We adapt without reacting.',
+              'Life and markets change. Reviews are for deliberate decisions, not noise-driven switching.',
+            ],
+            [
+              '12',
+              'Communication',
+              'We keep the door open.',
+              'You receive plain-language updates, useful context and a place to ask the question behind the question.',
+            ],
+          ].map(([number, title, front, back]) => (
+            <article class="vf-flip-card vf-practice-card" data-flip-card>
+              <button
+                class="vf-flip-inner"
+                type="button"
+                aria-pressed="false"
+                aria-label={`Show details about ${title}`}
+              >
+                <>
+                  <span class="vf-flip-face vf-flip-front">
+                    <>
+                      <span class="vf-card-tag">{number} / How we do it</span>
+                      <strong>{title}</strong>
+                      <p>{front}</p>
+                      <span class="vf-card-hint">Tap to explore ↗</span>
+                    </>
+                  </span>
+                  <span class="vf-flip-face vf-flip-back">
+                    <>
+                      <span class="vf-card-tag">The Vridhikaa way</span>
+                      <strong>{title}</strong>
+                      <p>{back}</p>
+                      <span class="vf-card-hint">Tap to return ↺</span>
+                    </>
+                  </span>
+                </>
+              </button>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
     <section class="vf-section vf-tools" id="tools">
       <div class="vf-section-heading">
         <div><p class="vf-kicker">Investor tools</p><h2>Numbers become<br /><em>useful here.</em></h2></div><p>
@@ -324,10 +480,31 @@ const faqSchema = {
                 value="12"
               /></label
             >
+          </div><div class="vf-calc-extra">
+            <label
+              >Annual SIP step-up <output id="stepup-value">10%</output><input
+                id="stepup"
+                type="range"
+                min="0"
+                max="20"
+                step="1"
+                value="10"
+              /></label
+            ><label
+              >Target goal <output id="goal-value">₹ 75 L</output><input
+                id="goal"
+                type="range"
+                min="1000000"
+                max="50000000"
+                step="500000"
+                value="7500000"
+              /></label>
           </div><div class="vf-calc-result">
             <div><span>Estimated value*</span><strong id="future-value">₹ 58.1 L</strong></div><div>
               <span>Your investment</span><strong id="principal-value">₹ 30.0 L</strong>
-            </div><div><span>Illustrative growth</span><strong id="growth-value">₹ 28.1 L</strong></div>
+            </div><div><span>Illustrative growth</span><strong id="growth-value">₹ 28.1 L</strong></div><div>
+              <span>Value in today’s money</span><strong id="inflation-value">₹ 30.5 L</strong>
+            </div><div><span>Goal gap / surplus</span><strong id="goal-gap">₹ 16.9 L</strong></div>
           </div><p class="vf-fineprint">
             *Illustrative only. Actual returns are market-linked and may vary. This is not investment advice or a return
             guarantee.
@@ -395,6 +572,50 @@ const faqSchema = {
       </div>
     </section>
 
+    <section class="vf-section vf-founder" id="about">
+      <div class="vf-founder-photo">
+        <img
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/me-1RSNgNSrc3BYlUggr1tbuN8dKZtzX5.jpg"
+          alt="Founder of Vridhikaa Finserv"
+          loading="lazy"
+        />
+      </div>
+      <div class="vf-founder-copy">
+        <p class="vf-kicker">About Vridhikaa</p><h2>A steady voice for<br /><em>important decisions.</em></h2><p>
+          Vridhikaa Finserv was built around a simple belief: financial advice should sound like a thoughtful
+          conversation, not a sales pitch. We help families and founders make sense of the moving pieces, with room for
+          questions and the confidence to take the next step.
+        </p><p class="vf-founder-signoff">Human-led. Research-aware. Built around your context.</p><a
+          href="#contact"
+          class="vf-text-link">Start a conversation <span>↗</span></a>
+      </div>
+    </section>
+
+    <section class="vf-section vf-articles" id="articles">
+      <div class="vf-section-heading">
+        <div><p class="vf-kicker">Authored insights</p><h2>Useful reading for<br /><em>real life.</em></h2></div><p>
+          Short, plain-language notes for the questions that sit between a headline and a decision.
+        </p>
+      </div>
+      <div class="vf-article-grid">
+        <article>
+          <span class="vf-card-tag">Perspective · 06 min</span><h3>What should an emergency fund actually do?</h3><p>
+            It is less about finding the perfect number and more about buying your future self room to think.
+          </p><a href="#contact" class="vf-text-link">Read the note <span>↗</span></a>
+        </article>
+        <article>
+          <span class="vf-card-tag">Perspective · 08 min</span><h3>SIP, lump sum or both?</h3><p>
+            The right answer depends on cash flow, time horizon and how you behave when markets wobble.
+          </p><a href="#contact" class="vf-text-link">Read the note <span>↗</span></a>
+        </article>
+        <article>
+          <span class="vf-card-tag">Perspective · 05 min</span><h3>When does a portfolio need a reset?</h3><p>
+            A review is not a reaction. It is a chance to check whether the plan still fits the life it serves.
+          </p><a href="#contact" class="vf-text-link">Read the note <span>↗</span></a>
+        </article>
+      </div>
+    </section>
+
     <section class="vf-contact" id="contact">
       <div>
         <p class="vf-kicker">A conversation worth having</p><h2>Bring us your<br /><em>big picture.</em></h2>
@@ -416,9 +637,9 @@ const faqSchema = {
           >Solutions</a
         ><a href="#tools">Investor tools</a>
       </div><div>
-        <span class="vf-footer-label">Connect</span><a href="mailto:hello@vridhikaafinserv.com"
-          >hello@vridhikaafinserv.com</a
-        ><a href="tel:+912240000000">+91 22 4000 0000</a><a href="#contact">Mumbai · Bengaluru · Delhi</a>
+        <span class="vf-footer-label">Connect</span><a href="mailto:contact@vridhikaa.com">contact@vridhikaa.com</a><a
+          href="tel:+912240000000">+91 9105523719</a
+        ><a href="#contact">Mumbai · Bengaluru · Delhi</a>
       </div><div>
         <span class="vf-footer-label">Important</span><a href="#disclosures">Disclosures</a><a href="#disclosures"
           >Privacy</a
@@ -661,8 +882,9 @@ const faqSchema = {
     max-height: 74%;
     object-fit: contain;
     opacity: 0.96;
-    mix-blend-mode: screen;
-    filter: sepia(0.18) saturate(0.78) contrast(1.08) brightness(1.18);
+    mix-blend-mode: multiply;
+    filter: sepia(0.08) saturate(0.72) contrast(1.08) brightness(1.12);
+    background: transparent;
   }
   .vf-art-ring {
     width: 340px;
@@ -952,6 +1174,122 @@ const faqSchema = {
     line-height: 1.6;
     margin: 2rem 0 0;
   }
+  .vf-practice,
+  .vf-founder,
+  .vf-articles {
+    background: var(--ivory);
+  }
+  .vf-process {
+    background: var(--navy);
+    color: var(--ivory);
+    max-width: none;
+    padding-left: max(calc((100vw - 1240px) / 2 + 4.5rem), 1.25rem);
+    padding-right: max(calc((100vw - 1240px) / 2 + 4.5rem), 1.25rem);
+  }
+  .vf-process h2,
+  .vf-process .vf-section-heading > p {
+    color: var(--ivory);
+  }
+  .vf-practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+  .vf-practice-card {
+    min-height: 270px;
+  }
+  .vf-practice-card .vf-flip-inner {
+    min-height: 270px;
+  }
+  .vf-practice-card .vf-flip-face {
+    overflow: hidden;
+    overflow-wrap: anywhere;
+  }
+  .vf-practice-card .vf-flip-face strong {
+    margin-top: 1.3rem;
+    font-size: 1.55rem;
+  }
+  .vf-practice-card .vf-flip-face p {
+    color: inherit;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    margin: 0.9rem 0 0;
+  }
+  .vf-practice-card .vf-flip-front {
+    background: #f1ede3;
+  }
+  .vf-practice-card .vf-flip-back {
+    background: var(--emerald);
+  }
+  .vf-card-hint {
+    color: var(--gold);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    margin-top: auto;
+    text-transform: uppercase;
+  }
+  .vf-process .vf-card-tag {
+    color: #b9c7c1;
+  }
+  .vf-process .vf-flip-front {
+    background: #173c50;
+    color: var(--ivory);
+  }
+  .vf-founder {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.75fr) 1.25fr;
+    gap: clamp(2rem, 7vw, 7rem);
+    align-items: center;
+  }
+  .vf-founder-photo {
+    display: grid;
+    place-items: center;
+    min-height: 320px;
+    background: #f1ede3;
+    overflow: hidden;
+  }
+  .vf-founder-photo img {
+    width: min(100%, 380px);
+    height: 380px;
+    object-fit: contain;
+    display: block;
+  }
+  .vf-founder-copy {
+    max-width: 600px;
+  }
+  .vf-founder-copy > p:not(.vf-kicker):not(.vf-founder-signoff) {
+    color: var(--ink);
+    line-height: 1.75;
+    max-width: 560px;
+  }
+  .vf-founder-signoff {
+    color: var(--emerald);
+    font-family: Georgia, serif;
+    font-size: 1.1rem;
+  }
+  .vf-article-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .vf-article-grid article {
+    border-top: 1px solid var(--line);
+    padding-top: 1.1rem;
+  }
+  .vf-article-grid h3 {
+    color: var(--navy);
+    font:
+      400 1.45rem/1.12 Georgia,
+      serif;
+    letter-spacing: -0.03em;
+    margin: 1.3rem 0 0.7rem;
+  }
+  .vf-article-grid p {
+    color: var(--ink);
+    font-size: 0.82rem;
+    line-height: 1.65;
+    min-height: 4.2rem;
+  }
   .vf-tools {
     background: #e9e4d9;
     max-width: none;
@@ -1018,9 +1356,32 @@ const faqSchema = {
     width: 100%;
     accent-color: var(--gold);
   }
+  .vf-calc-extra {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  .vf-calc-extra label {
+    color: var(--emerald);
+    font-size: 0.67rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .vf-calc-extra output {
+    display: block;
+    color: var(--navy);
+    font:
+      1.25rem Georgia,
+      serif;
+    letter-spacing: 0;
+    margin: 0.7rem 0 1rem;
+    text-transform: none;
+  }
   .vf-calc-result {
-    display: flex;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.2rem;
     border-top: 1px solid var(--line);
     padding-top: 1.5rem;
   }
@@ -1211,6 +1572,8 @@ const faqSchema = {
   .vf-footer-brand img {
     width: 128px;
     mix-blend-mode: multiply;
+    opacity: 0.88;
+    background: transparent;
   }
   .vf-footer-brand p {
     font-family: Georgia, serif;
@@ -1358,7 +1721,22 @@ const faqSchema = {
     }
     .vf-principles,
     .vf-service-grid,
-    .vf-instrument-grid {
+    .vf-instrument-grid,
+    .vf-practice-grid,
+    .vf-article-grid {
+      grid-template-columns: 1fr;
+    }
+    .vf-founder {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .vf-founder-photo {
+      min-height: 260px;
+    }
+    .vf-founder-photo img {
+      height: 300px;
+    }
+    .vf-calc-extra {
       grid-template-columns: 1fr;
     }
     .vf-flip-card,
@@ -1436,6 +1814,12 @@ const faqSchema = {
   const investment = document.querySelector<HTMLInputElement>('#investment');
   const years = document.querySelector<HTMLInputElement>('#years');
   const rate = document.querySelector<HTMLInputElement>('#rate');
+  const stepup = document.querySelector<HTMLInputElement>('#stepup');
+  const goal = document.querySelector<HTMLInputElement>('#goal');
+  const stepupValue = document.querySelector<HTMLOutputElement>('#stepup-value');
+  const goalValue = document.querySelector<HTMLOutputElement>('#goal-value');
+  const inflationValue = document.querySelector<HTMLOutputElement>('#inflation-value');
+  const goalGap = document.querySelector<HTMLOutputElement>('#goal-gap');
   const investmentValue = document.querySelector<HTMLOutputElement>('#investment-value');
   const yearsValue = document.querySelector<HTMLOutputElement>('#years-value');
   const rateValue = document.querySelector<HTMLOutputElement>('#rate-value');
@@ -1452,24 +1836,42 @@ const faqSchema = {
       !rateValue ||
       !futureValue ||
       !principalValue ||
-      !growthValue
+      !growthValue ||
+      !stepup ||
+      !goal ||
+      !stepupValue ||
+      !goalValue ||
+      !inflationValue ||
+      !goalGap
     )
       return;
     const monthly = Number(investment.value);
     const horizon = Number(years.value);
     const annualRate = Number(rate.value);
+    const annualStepup = Number(stepup.value) / 100;
+    const goalAmount = Number(goal.value);
     const monthlyRate = annualRate / 100 / 12;
     const months = horizon * 12;
-    const future = monthly * (((1 + monthlyRate) ** months - 1) / monthlyRate) * (1 + monthlyRate);
-    const principal = monthly * months;
+    let future = 0;
+    let principal = 0;
+    for (let month = 0; month < months; month += 1) {
+      const currentMonthly = monthly * (1 + annualStepup) ** Math.floor(month / 12);
+      future = (future + currentMonthly) * (1 + monthlyRate);
+      principal += currentMonthly;
+    }
+    const inflationAdjusted = future / 1.06 ** horizon;
     investmentValue.textContent = `₹ ${monthly.toLocaleString('en-IN')}`;
     yearsValue.textContent = `${horizon} years`;
     rateValue.textContent = `${annualRate}%`;
+    stepupValue.textContent = `${annualStepup * 100}%`;
+    goalValue.textContent = money(goalAmount);
     futureValue.textContent = money(future);
     principalValue.textContent = money(principal);
     growthValue.textContent = money(future - principal);
+    inflationValue.textContent = money(inflationAdjusted);
+    goalGap.textContent = future >= goalAmount ? `+ ${money(future - goalAmount)}` : `− ${money(goalAmount - future)}`;
   };
-  [investment, years, rate].forEach((control) => control?.addEventListener('input', updateCalculator));
+  [investment, years, rate, stepup, goal].forEach((control) => control?.addEventListener('input', updateCalculator));
   updateCalculator();
   const menu = document.querySelector('.vf-menu');
   const nav = document.querySelector('.vf-nav');
@@ -1486,6 +1888,12 @@ const faqSchema = {
   document.querySelectorAll<HTMLElement>('[data-flip-card]').forEach((card) => {
     const button = card.querySelector<HTMLButtonElement>('.vf-flip-inner');
     button?.addEventListener('click', () => {
+      document.querySelectorAll<HTMLElement>('[data-flip-card].is-flipped').forEach((other) => {
+        if (other !== card) {
+          other.classList.remove('is-flipped');
+          other.querySelector('button')?.setAttribute('aria-pressed', 'false');
+        }
+      });
       const flipped = card.classList.toggle('is-flipped');
       button.setAttribute('aria-pressed', String(flipped));
     });
