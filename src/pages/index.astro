@@ -1349,19 +1349,19 @@ const faqSchema = {
     color: var(--navy);
     text-align: left;
     cursor: pointer;
-    transform-style: preserve-3d;
-    transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition:
+      border-color 220ms ease,
+      box-shadow 220ms ease,
+      transform 220ms ease;
   }
-  .vf-flip-card.is-flipped .vf-flip-inner,
   .vf-flip-card:hover .vf-flip-inner,
   .vf-flip-card:focus-within .vf-flip-inner {
-    transform: rotateY(180deg);
+    border-color: rgba(203, 169, 96, 0.86);
+    box-shadow: 0 1.25rem 2.5rem rgba(16, 45, 77, 0.14);
+    transform: translateY(-0.25rem);
   }
-  @media (hover: hover) and (pointer: fine) {
-    .vf-flip-card:hover .vf-flip-inner,
-    .vf-flip-card:focus-within .vf-flip-inner {
-      box-shadow: 0 1.25rem 2.5rem rgba(16, 45, 77, 0.18);
-    }
+  .vf-flip-card.is-active .vf-flip-inner {
+    border-color: var(--gold);
   }
   .vf-flip-face {
     position: absolute;
@@ -1386,12 +1386,23 @@ const faqSchema = {
     text-wrap: balance;
   }
   .vf-flip-front {
+    position: relative;
     background: linear-gradient(145deg, #faf7ef 0%, #eee7d9 100%);
   }
   .vf-flip-back {
-    background: linear-gradient(145deg, #102d4d 0%, #173c50 56%, #245b51 100%);
-    color: var(--ivory);
-    transform: rotateY(180deg);
+    display: none;
+  }
+  .vf-flip-card.is-active .vf-card-icon {
+    animation: vf-icon-pulse 1.8s ease-in-out;
+  }
+  @keyframes vf-icon-pulse {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    45% {
+      transform: translateY(-0.3rem) scale(1.08);
+    }
   }
   .vf-flip-back::after {
     content: '';
@@ -1649,15 +1660,23 @@ const faqSchema = {
     z-index: 2;
     display: grid;
     place-items: center;
-    width: 3.3rem;
-    height: 3.3rem;
-    border: 1px solid #f1cf86;
+    width: 4.5rem;
+    height: 4.5rem;
+    border: 2px solid #f5d58c;
     border-radius: 50%;
-    color: #f1cf86;
+    color: #fff0b5;
     font:
-      600 0.9rem Georgia,
+      700 1.15rem Georgia,
       serif;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
+    text-shadow:
+      0 1px 0 #8a5b18,
+      0 0 0.8rem rgba(255, 222, 130, 0.9);
+    background: radial-gradient(circle at 35% 28%, #fff3b0 0%, #d7a641 28%, #a96d1f 62%, #6d4315 100%);
+    box-shadow:
+      inset 0 0 0 3px rgba(255, 241, 172, 0.42),
+      inset 0 0 0 7px rgba(117, 69, 13, 0.35),
+      0 0 1.4rem rgba(236, 191, 85, 0.7);
   }
   .vf-founder-identity {
     display: grid;
@@ -2387,14 +2406,12 @@ const faqSchema = {
     .vf-flip-card:focus-within .vf-card-icon {
       transform: none;
     }
-    .vf-flip-card.is-flipped .vf-flip-inner {
+    .vf-flip-card.is-active .vf-card-icon {
+      animation: none;
+    }
+    .vf-flip-card:hover .vf-flip-inner,
+    .vf-flip-card:focus-within .vf-flip-inner {
       transform: none;
-    }
-    .vf-flip-card.is-flipped .vf-flip-front {
-      display: none;
-    }
-    .vf-flip-card:not(.is-flipped) .vf-flip-back {
-      display: none;
     }
   }
 </style>
@@ -2522,14 +2539,14 @@ const faqSchema = {
   document.querySelectorAll<HTMLElement>('[data-flip-card]').forEach((card) => {
     const button = card.querySelector<HTMLButtonElement>('.vf-flip-inner');
     button?.addEventListener('click', () => {
-      document.querySelectorAll<HTMLElement>('[data-flip-card].is-flipped').forEach((other) => {
-        if (other !== card) {
-          other.classList.remove('is-flipped');
-          other.querySelector('button')?.setAttribute('aria-pressed', 'false');
-        }
-      });
-      const flipped = card.classList.toggle('is-flipped');
-      button.setAttribute('aria-pressed', String(flipped));
+      card.classList.remove('is-active');
+      void card.offsetWidth;
+      card.classList.add('is-active');
+      button.setAttribute('aria-pressed', 'true');
+      window.setTimeout(() => {
+        card.classList.remove('is-active');
+        button.setAttribute('aria-pressed', 'false');
+      }, 1800);
     });
   });
   document.querySelectorAll('[data-matrix]').forEach((button) =>
