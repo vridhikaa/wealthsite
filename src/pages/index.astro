@@ -225,7 +225,44 @@ const faqSchema = {
           to read next.
         </p>
       </div>
-      <div class="vf-instrument-icon-grid" aria-label="Financial instrument guides">
+      <div class="vf-instrument-focus-grid" aria-label="Financial instrument guides">
+        <article class="vf-instrument-focus-card" data-flip-card>
+          <button
+            class="vf-flip-inner"
+            type="button"
+            aria-pressed="false"
+            aria-label="Show fun facts about financial instruments"
+            ><span class="vf-flip-face vf-flip-front"
+              ><span class="vf-focus-icon" aria-hidden="true">✦</span><span class="vf-card-tag">Fun facts</span><strong
+                >Know what you own.</strong
+              ><p>Useful context for understanding common financial instruments.</p><span class="vf-focus-action"
+                >Reveal facts ↗</span
+              ></span
+            ><span class="vf-flip-face vf-flip-back"
+              ><span class="vf-card-tag">Fun facts</span><strong>Small details matter.</strong><ul>
+                <li>Mutual funds pool money from multiple investors.</li><li>
+                  Bonds represent lending to an issuer.
+                </li><li>Index funds aim to follow a market benchmark.</li>
+              </ul><span class="vf-focus-action">Tap to return ↺</span></span
+            ></button>
+        </article>
+        <article class="vf-instrument-focus-card" data-flip-card>
+          <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label="Show scheme documents guidance"
+            ><span class="vf-flip-face vf-flip-front"
+              ><span class="vf-focus-icon" aria-hidden="true">▤</span><span class="vf-card-tag">Scheme documents</span
+              ><strong>Read before you decide.</strong><p>
+                A calm checklist for the documents behind an investment product.
+              </p><span class="vf-focus-action">Reveal checklist ↗</span></span
+            ><span class="vf-flip-face vf-flip-back"
+              ><span class="vf-card-tag">Scheme documents</span><strong>Look for the essentials.</strong><ul>
+                <li>Objective and investment strategy.</li><li>Risk level, costs and exit conditions.</li><li>
+                  Suitability for your goals and time horizon.
+                </li>
+              </ul><span class="vf-focus-action">Tap to return ↺</span></span
+            ></button>
+        </article>
+      </div>
+      <div class="vf-instrument-icon-grid" aria-label="Legacy financial instrument guides">
         <article class="vf-instrument-icon-tile" data-flip-card>
           <button
             class="vf-flip-inner"
@@ -3336,8 +3373,87 @@ const faqSchema = {
       animation: none;
     }
   }
-  .vf-instrument-showcase {
+  .vf-instrument-showcase,
+  .vf-instrument-icon-grid {
     display: none;
+  }
+  .vf-instrument-focus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .vf-instrument-focus-card,
+  .vf-instrument-focus-card .vf-flip-inner,
+  .vf-instrument-focus-card .vf-flip-face {
+    min-width: 0;
+    min-height: 22rem;
+  }
+  .vf-instrument-focus-card .vf-flip-inner {
+    width: 100%;
+    height: 100%;
+  }
+  .vf-instrument-focus-card .vf-flip-face {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    padding: clamp(1.5rem, 3vw, 2.4rem);
+  }
+  .vf-instrument-focus-card .vf-flip-front {
+    background: linear-gradient(145deg, #f7f3ea, #e5dfd1);
+    color: var(--navy);
+  }
+  .vf-instrument-focus-card .vf-flip-back {
+    background: linear-gradient(145deg, #173c50, #245b51);
+    color: #f7f3ea;
+  }
+  .vf-focus-icon {
+    display: grid;
+    width: 3.8rem;
+    height: 3.8rem;
+    place-items: center;
+    border: 1px solid #cba960;
+    border-radius: 50%;
+    color: var(--emerald);
+    font-size: 2rem;
+  }
+  .vf-instrument-focus-card .vf-card-tag {
+    margin-top: 1.2rem;
+  }
+  .vf-instrument-focus-card strong {
+    max-width: 18ch;
+    margin-top: 0.85rem;
+    font-size: clamp(1.5rem, 3vw, 2.35rem);
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+  }
+  .vf-instrument-focus-card p,
+  .vf-instrument-focus-card li {
+    max-width: 42ch;
+    margin-top: 0.8rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+  .vf-instrument-focus-card ul {
+    margin-top: 0.4rem;
+    padding-left: 1.15rem;
+  }
+  .vf-instrument-focus-card .vf-flip-back strong,
+  .vf-instrument-focus-card .vf-flip-back p,
+  .vf-instrument-focus-card .vf-flip-back li {
+    color: #f7f3ea;
+  }
+  .vf-focus-action {
+    margin-top: auto;
+    color: var(--emerald);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .vf-instrument-focus-card .vf-flip-back .vf-focus-action,
+  .vf-instrument-focus-card .vf-flip-back .vf-card-tag {
+    color: #f1cf86;
   }
   .vf-instrument-icon-grid {
     display: grid;
@@ -3543,6 +3659,16 @@ const faqSchema = {
   }
   .vf-instrument-grid .vf-flip-back a {
     overflow-wrap: anywhere;
+  }
+  @media (max-width: 700px) {
+    .vf-instrument-focus-grid {
+      grid-template-columns: 1fr;
+    }
+    .vf-instrument-focus-card,
+    .vf-instrument-focus-card .vf-flip-inner,
+    .vf-instrument-focus-card .vf-flip-face {
+      min-height: 20rem;
+    }
   }
   @media (max-width: 1100px) {
     .vf-instrument-icon-grid {
