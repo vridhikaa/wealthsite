@@ -167,24 +167,50 @@ const faqSchema = {
           role="button"
           aria-expanded="true"
         >
-          <span class="vf-service-no">01 / CORE</span><h3>Mutual funds<br /><em>& goal planning</em></h3><p>
-            Goal-led mutual fund selection across equity, debt and hybrid categories, explained in plain language.
-            Scheme documents and risk factors should be reviewed before investing.
-          </p><a href="#contact">Explore portfolios <span>↗</span></a>
+          <span class="vf-flip-face vf-flip-front"
+            ><span class="vf-card-tag">Core planning</span><h3>Mutual funds<br /><em>& goal planning</em></h3><p>
+              Goal-led mutual fund selection across equity, debt and hybrid categories, explained in plain language.
+            </p><span class="vf-card-action">Flip to see how <span aria-hidden="true">↗</span></span></span
+          ><span class="vf-flip-face vf-flip-back"
+            ><span class="vf-card-tag">How we do it</span><h3>Start with the goal.</h3><p>
+              We map time horizon, cash flow and risk comfort before discussing categories, schemes, costs and official
+              documents.
+            </p><a href="#contact">Explore portfolios <span>↗</span></a></span
+          >
         </article><article class="vf-service" data-solution-card tabindex="0" role="button" aria-expanded="false">
-          <span class="vf-service-no">02 / STABILITY</span><h3>Fixed income<br /><em>& bonds</em></h3><p>
-            Income-oriented instruments, including debt mutual funds and bonds, with credit, liquidity, interest-rate
-            and tax considerations.
-          </p><a href="#tools">See the universe <span>↗</span></a>
+          <span class="vf-flip-face vf-flip-front"
+            ><span class="vf-card-tag">Stability</span><h3>Fixed income<br /><em>& bonds</em></h3><p>
+              Income-oriented instruments with credit, liquidity, interest-rate and tax considerations.
+            </p><span class="vf-card-action">Flip to see how <span aria-hidden="true">↗</span></span></span
+          ><span class="vf-flip-face vf-flip-back"
+            ><span class="vf-card-tag">How we do it</span><h3>Make the trade-offs clear.</h3><p>
+              We compare maturity, issuer quality, liquidity and tax treatment so the role of each instrument is easy to
+              understand.
+            </p><a href="#tools">See the universe <span>↗</span></a></span
+          >
         </article><article class="vf-service" data-solution-card tabindex="0" role="button" aria-expanded="false">
-          <span class="vf-service-no">03 / CONTEXT</span><h3>Goals<br /><em>& time horizons</em></h3><p>
-            Clarify your goals, cash flow and time horizon before reviewing suitable mutual fund categories and scheme
-            documents.
-          </p><a href="#contact">Discuss your goals <span>↗</span></a>
+          <span class="vf-flip-face vf-flip-front"
+            ><span class="vf-card-tag">Context</span><h3>Goals<br /><em>& time horizons</em></h3><p>
+              Clarify your goals, cash flow and time horizon before reviewing suitable mutual fund categories and scheme
+              documents.
+            </p><span class="vf-card-action">Flip to see how <span aria-hidden="true">↗</span></span></span
+          ><span class="vf-flip-face vf-flip-back"
+            ><span class="vf-card-tag">How we do it</span><h3>Put life before labels.</h3><p>
+              We turn ambitions into time-bound priorities, then test whether the proposed approach fits your real-world
+              cash flow.
+            </p><a href="#contact">Discuss your goals <span>↗</span></a></span
+          >
         </article><article class="vf-service" data-solution-card tabindex="0" role="button" aria-expanded="false">
-          <span class="vf-service-no">04 / EDUCATION</span><h3>Fund facts<br /><em>& scheme documents</em></h3><p>
-            Learn how to review objectives, costs, risks and suitability information before considering a mutual fund.
-          </p><a href="#instruments">Review fund basics <span>↗</span></a>
+          <span class="vf-flip-face vf-flip-front"
+            ><span class="vf-card-tag">Education</span><h3>Fund facts<br /><em>& scheme documents</em></h3><p>
+              Learn how to review objectives, costs, risks and suitability information before considering a mutual fund.
+            </p><span class="vf-card-action">Flip to see how <span aria-hidden="true">↗</span></span></span
+          ><span class="vf-flip-face vf-flip-back"
+            ><span class="vf-card-tag">How we do it</span><h3>Make the fine print useful.</h3><p>
+              We translate objectives, fees, risk indicators and suitability notes into questions you can confidently
+              ask before investing.
+            </p><a href="#instruments">Review fund basics <span>↗</span></a></span
+          >
         </article>
       </div>
     </section>
@@ -1448,8 +1474,8 @@ const faqSchema = {
     border-left: 1px solid rgba(244, 241, 233, 0.28);
   }
   .vf-service {
-    min-height: 370px;
-    padding: 1.7rem;
+    min-height: 20rem;
+    padding: 0;
     cursor: pointer;
     transition:
       background 220ms ease,
@@ -1474,6 +1500,58 @@ const faqSchema = {
   .vf-service:not(.is-active):hover,
   .vf-service:not(.is-active):focus-visible {
     opacity: 1;
+  }
+  .vf-service .vf-flip-face {
+    display: flex;
+    min-width: 0;
+    min-height: 20rem;
+    flex-direction: column;
+    padding: 1.45rem;
+  }
+  .vf-service .vf-flip-front {
+    background: linear-gradient(145deg, #f7f3ea, #e5dfd1);
+    color: var(--navy);
+  }
+  .vf-service .vf-flip-front p {
+    color: #315264;
+  }
+  .vf-service .vf-flip-front .vf-card-tag,
+  .vf-service .vf-flip-front .vf-card-action {
+    color: var(--emerald);
+  }
+  .vf-service .vf-flip-back {
+    display: none;
+    background: linear-gradient(145deg, #2d6d5f, #173c50);
+    color: #f7f3ea;
+  }
+  .vf-service.is-active .vf-flip-front {
+    display: flex;
+  }
+  .vf-service.is-active .vf-flip-back {
+    display: flex;
+  }
+  .vf-service .vf-flip-face h3 {
+    margin-top: 1.25rem;
+    color: var(--navy);
+    font:
+      500 clamp(1.45rem, 2.6vw, 2.35rem) / 1.04 Georgia,
+      serif;
+  }
+  .vf-service .vf-flip-back h3,
+  .vf-service .vf-flip-back p {
+    color: #f7f3ea;
+  }
+  .vf-service .vf-flip-face p {
+    max-width: 32ch;
+    margin-top: 0.8rem;
+    line-height: 1.55;
+  }
+  .vf-service .vf-card-action,
+  .vf-service .vf-flip-back a {
+    margin-top: auto;
+  }
+  .vf-service .vf-flip-back a {
+    color: #f1cf86;
   }
   .vf-service h3 {
     font-size: 2rem;
@@ -2818,8 +2896,9 @@ const faqSchema = {
     .vf-practice-card .vf-flip-inner {
       min-height: 320px;
     }
-    .vf-service {
-      min-height: 280px;
+    .vf-service,
+    .vf-service .vf-flip-face {
+      min-height: 18rem;
     }
     .vf-section-heading {
       display: block;
@@ -3215,7 +3294,8 @@ const faqSchema = {
     };
     card.addEventListener('click', (event) => {
       if ((event.target as HTMLElement).closest('a')) return;
-      activateSolution();
+      card.classList.toggle('is-active');
+      card.setAttribute('aria-expanded', String(card.classList.contains('is-active')));
     });
     card.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
