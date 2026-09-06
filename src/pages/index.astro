@@ -166,9 +166,23 @@ const faqSchema = {
         <article class="vf-flip-card" data-flip-card>
           <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label="Show equity mutual fund details">
             <span class="vf-flip-face vf-flip-front"
-              ><span class="vf-card-icon vf-icon-chart">↗</span><span class="vf-card-tag">01 / Growth</span><strong
-                >Equity<br /><em>mutual funds</em></strong
-              ><p class="vf-card-summary">
+              ><span class="vf-card-icon vf-icon-chart" aria-hidden="true"
+                ><svg viewBox="0 0 48 48" fill="none"
+                  ><path
+                    d="M8 36 19 25l7 6 14-17"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path><path
+                    d="M31 14h9v9"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path></svg
+                ></span
+              ><span class="vf-card-tag">01 / Growth</span><strong>Equity<br /><em>mutual funds</em></strong><p
+                class="vf-card-summary"
+              >
                 Diversified market participation for long-term goals, managed within a defined risk profile.
               </p><span class="vf-card-meter"><i style="width:82%"></i></span><small>Horizon: usually 7+ years</small
               ></span
@@ -195,9 +209,15 @@ const faqSchema = {
             aria-label="Show bonds and fixed income details"
           >
             <span class="vf-flip-face vf-flip-front"
-              ><span class="vf-card-icon vf-icon-bond">—</span><span class="vf-card-tag">02 / Stability</span><strong
-                >Bonds &<br /><em>fixed income</em></strong
-              ><p class="vf-card-summary">
+              ><span class="vf-card-icon vf-icon-bond" aria-hidden="true"
+                ><svg viewBox="0 0 48 48" fill="none"
+                  ><path d="M8 14h32M8 24h32M8 34h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  ></path><path d="M14 8v32M24 8v32M34 8v32" stroke="currentColor" stroke-width="1.5" opacity=".65"
+                  ></path></svg
+                ></span
+              ><span class="vf-card-tag">02 / Stability</span><strong>Bonds &<br /><em>fixed income</em></strong><p
+                class="vf-card-summary"
+              >
                 Income-oriented instruments designed to bring stability, liquidity and balance to a portfolio.
               </p><span class="vf-card-meter"><i style="width:54%"></i></span><small>Role: income and ballast</small
               ></span
@@ -219,9 +239,34 @@ const faqSchema = {
         <article class="vf-flip-card" data-flip-card>
           <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label="Show index fund details">
             <span class="vf-flip-face vf-flip-front"
-              ><span class="vf-card-icon vf-icon-grid">＋</span><span class="vf-card-tag">03 / Core</span><strong
-                >Index<br /><em>funds</em></strong
-              ><p class="vf-card-summary">
+              ><span class="vf-card-icon vf-icon-grid" aria-hidden="true"
+                ><svg viewBox="0 0 48 48" fill="none"
+                  ><rect x="8" y="8" width="12" height="12" rx="2" stroke="currentColor" stroke-width="3"></rect><rect
+                    x="28"
+                    y="8"
+                    width="12"
+                    height="12"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="3"></rect><rect
+                    x="8"
+                    y="28"
+                    width="12"
+                    height="12"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="3"></rect><rect
+                    x="28"
+                    y="28"
+                    width="12"
+                    height="12"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="3"></rect></svg
+                ></span
+              ><span class="vf-card-tag">03 / Core</span><strong>Index<br /><em>funds</em></strong><p
+                class="vf-card-summary"
+              >
                 A simple, diversified way to follow a market index with transparent portfolio exposure.
               </p><span class="vf-card-meter"><i style="width:68%"></i></span><small>Role: broad market exposure</small
               ></span
@@ -243,9 +288,22 @@ const faqSchema = {
         <article class="vf-flip-card" data-flip-card>
           <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label="Show insurance details">
             <span class="vf-flip-face vf-flip-front"
-              ><span class="vf-card-icon vf-icon-shield">◇</span><span class="vf-card-tag">04 / Protection</span><strong
-                >Insurance<br /><em>cover</em></strong
-              ><p class="vf-card-summary">
+              ><span class="vf-card-icon vf-icon-shield" aria-hidden="true"
+                ><svg viewBox="0 0 48 48" fill="none"
+                  ><path
+                    d="M24 6 39 12v11c0 10-6.5 16-15 20-8.5-4-15-10-15-20V12l15-6Z"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linejoin="round"></path><path
+                    d="m17 24 5 5 10-11"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path></svg
+                ></span
+              ><span class="vf-card-tag">04 / Protection</span><strong>Insurance<br /><em>cover</em></strong><p
+                class="vf-card-summary"
+              >
                 Protection for health, income and family responsibilities that investments cannot replace.
               </p><span class="vf-card-meter"><i style="width:38%"></i></span><small>Role: protect earning power</small
               ></span
@@ -265,8 +323,21 @@ const faqSchema = {
         <article class="vf-flip-card" data-flip-card>
           <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label="Show PMS and AIF details">
             <span class="vf-flip-face vf-flip-front"
-              ><span class="vf-card-icon vf-icon-dots">•••</span><span class="vf-card-tag">05 / Alternatives</span
-              ><strong>PMS &<br /><em>AIFs</em></strong><p class="vf-card-summary">
+              ><span class="vf-card-icon vf-icon-dots" aria-hidden="true"
+                ><svg viewBox="0 0 48 48" fill="none"
+                  ><circle cx="12" cy="24" r="4" fill="currentColor"></circle><circle
+                    cx="24"
+                    cy="24"
+                    r="4"
+                    fill="currentColor"></circle><circle cx="36" cy="24" r="4" fill="currentColor"></circle><path
+                    d="M12 24 24 12l12 12-12 12-12-12Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    opacity=".55"></path></svg
+                ></span
+              ><span class="vf-card-tag">05 / Alternatives</span><strong>PMS &<br /><em>AIFs</em></strong><p
+                class="vf-card-summary"
+              >
                 Specialist strategies for eligible investors seeking differentiated exposure and a deeper suitability
                 review.
               </p><span class="vf-card-meter"><i style="width:91%"></i></span><small
@@ -1231,10 +1302,29 @@ const faqSchema = {
     color: #b9c7c1;
   }
   .vf-card-icon {
-    font:
-      400 3rem/1 Georgia,
-      serif;
+    display: grid;
+    place-items: center;
+    width: 4.35rem;
+    height: 4.35rem;
     color: var(--gold);
+    border: 1px solid rgba(203, 169, 96, 0.62);
+    border-radius: 1.35rem;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(203, 169, 96, 0.12));
+    box-shadow:
+      inset 0 0 0 6px rgba(255, 255, 255, 0.18),
+      0 0.75rem 1.4rem rgba(16, 45, 77, 0.08);
+    transition:
+      transform 360ms cubic-bezier(0.2, 0.75, 0.2, 1),
+      background 360ms ease;
+  }
+  .vf-card-icon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .vf-flip-card:hover .vf-card-icon,
+  .vf-flip-card:focus-within .vf-card-icon {
+    transform: rotate(-8deg) scale(1.06);
+    background: linear-gradient(145deg, rgba(203, 169, 96, 0.25), rgba(36, 91, 81, 0.14));
   }
   .vf-card-summary {
     color: var(--ink);
@@ -2051,6 +2141,10 @@ const faqSchema = {
     }
     .vf-flip-card:hover,
     .vf-flip-card:focus-within {
+      transform: none;
+    }
+    .vf-flip-card:hover .vf-card-icon,
+    .vf-flip-card:focus-within .vf-card-icon {
       transform: none;
     }
     .vf-flip-card.is-flipped .vf-flip-inner {
