@@ -425,7 +425,9 @@ const faqSchema = {
                       <span class="vf-card-tag">{number} / What we do</span>
                       <strong>{title}</strong>
                       <p>{front}</p>
-                      <span class="vf-card-hint">Tap to explore ↗</span>
+                      <span class="vf-card-action" data-card-action="#contact" role="link" tabindex="0">
+                        Discuss this approach <span aria-hidden="true">↗</span>
+                      </span>
                     </>
                   </span>
                   <span class="vf-flip-face vf-flip-back">
@@ -503,7 +505,9 @@ const faqSchema = {
                       <span class="vf-card-tag">{number} / How we do it</span>
                       <strong>{title}</strong>
                       <p>{front}</p>
-                      <span class="vf-card-hint">Tap to explore ↗</span>
+                      <span class="vf-card-action" data-card-action="#contact" role="link" tabindex="0">
+                        Discuss this approach <span aria-hidden="true">↗</span>
+                      </span>
                     </>
                   </span>
                   <span class="vf-flip-face vf-flip-back">
@@ -1237,15 +1241,9 @@ const faqSchema = {
     transform: rotateY(180deg);
   }
   @media (hover: hover) and (pointer: fine) {
-    .vf-flip-card:hover,
-    .vf-flip-card:focus-within {
-      position: relative;
-      z-index: 8;
-      transform: scale(1.08);
-    }
     .vf-flip-card:hover .vf-flip-inner,
     .vf-flip-card:focus-within .vf-flip-inner {
-      box-shadow: 0 1.25rem 2.5rem rgba(16, 45, 77, 0.22);
+      box-shadow: 0 1.25rem 2.5rem rgba(16, 45, 77, 0.18);
     }
   }
   .vf-flip-face {
@@ -1331,8 +1329,12 @@ const faqSchema = {
   }
   .vf-flip-card:hover .vf-card-icon,
   .vf-flip-card:focus-within .vf-card-icon {
-    transform: rotate(-8deg) scale(1.06);
+    transform: translateY(-0.2rem);
     background: linear-gradient(145deg, rgba(203, 169, 96, 0.25), rgba(36, 91, 81, 0.14));
+    box-shadow:
+      inset 0 0 0 6px rgba(255, 255, 255, 0.18),
+      0 0 0 4px rgba(203, 169, 96, 0.14),
+      0 0.75rem 1.4rem rgba(16, 45, 77, 0.08);
   }
   .vf-card-summary {
     color: var(--ink);
@@ -1427,14 +1429,32 @@ const faqSchema = {
   .vf-practice-card .vf-flip-back {
     background: var(--emerald);
   }
-  .vf-card-hint {
+  .vf-card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    width: fit-content;
     color: var(--gold);
-    transition: color 180ms ease;
-
+    cursor: pointer;
     font-size: 0.65rem;
+    font-weight: 600;
     letter-spacing: 0.08em;
     margin-top: auto;
+    padding: 0.6rem 0;
     text-transform: uppercase;
+    transition:
+      color 180ms ease,
+      gap 180ms ease;
+  }
+  .vf-card-action:hover,
+  .vf-card-action:focus-visible {
+    color: var(--navy);
+    gap: 0.7rem;
+    outline: none;
+  }
+  .vf-flip-back .vf-card-action:hover,
+  .vf-flip-back .vf-card-action:focus-visible {
+    color: var(--ivory);
   }
   .vf-process .vf-card-tag {
     color: #b9c7c1;
@@ -2362,6 +2382,19 @@ const faqSchema = {
       menu?.setAttribute('aria-expanded', 'false');
     })
   );
+  document.querySelectorAll<HTMLElement>('[data-card-action]').forEach((action) => {
+    const goToTarget = () => {
+      const target = action.dataset.cardAction;
+      if (target) document.querySelector(target)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    action.addEventListener('click', goToTarget);
+    action.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        goToTarget();
+      }
+    });
+  });
   document.querySelectorAll<HTMLElement>('[data-flip-card]').forEach((card) => {
     const button = card.querySelector<HTMLButtonElement>('.vf-flip-inner');
     button?.addEventListener('click', () => {
