@@ -168,7 +168,9 @@ const faqSchema = {
             <span class="vf-flip-face vf-flip-front"
               ><span class="vf-card-icon vf-icon-chart">↗</span><span class="vf-card-tag">01 / Growth</span><strong
                 >Equity<br /><em>mutual funds</em></strong
-              ><span class="vf-card-meter"><i style="width:82%"></i></span><small>Horizon: usually 7+ years</small
+              ><p class="vf-card-summary">
+                Diversified market participation for long-term goals, managed within a defined risk profile.
+              </p><span class="vf-card-meter"><i style="width:82%"></i></span><small>Horizon: usually 7+ years</small
               ></span
             >
             <span class="vf-flip-face vf-flip-back"
@@ -195,7 +197,10 @@ const faqSchema = {
             <span class="vf-flip-face vf-flip-front"
               ><span class="vf-card-icon vf-icon-bond">—</span><span class="vf-card-tag">02 / Stability</span><strong
                 >Bonds &<br /><em>fixed income</em></strong
-              ><span class="vf-card-meter"><i style="width:54%"></i></span><small>Role: income and ballast</small></span
+              ><p class="vf-card-summary">
+                Income-oriented instruments designed to bring stability, liquidity and balance to a portfolio.
+              </p><span class="vf-card-meter"><i style="width:54%"></i></span><small>Role: income and ballast</small
+              ></span
             >
             <span class="vf-flip-face vf-flip-back"
               ><span class="vf-card-tag">Plain English</span><strong>For the part that steadies you.</strong><p>
@@ -216,7 +221,9 @@ const faqSchema = {
             <span class="vf-flip-face vf-flip-front"
               ><span class="vf-card-icon vf-icon-grid">＋</span><span class="vf-card-tag">03 / Core</span><strong
                 >Index<br /><em>funds</em></strong
-              ><span class="vf-card-meter"><i style="width:68%"></i></span><small>Role: broad market exposure</small
+              ><p class="vf-card-summary">
+                A simple, diversified way to follow a market index with transparent portfolio exposure.
+              </p><span class="vf-card-meter"><i style="width:68%"></i></span><small>Role: broad market exposure</small
               ></span
             >
             <span class="vf-flip-face vf-flip-back"
@@ -238,7 +245,9 @@ const faqSchema = {
             <span class="vf-flip-face vf-flip-front"
               ><span class="vf-card-icon vf-icon-shield">◇</span><span class="vf-card-tag">04 / Protection</span><strong
                 >Insurance<br /><em>cover</em></strong
-              ><span class="vf-card-meter"><i style="width:38%"></i></span><small>Role: protect earning power</small
+              ><p class="vf-card-summary">
+                Protection for health, income and family responsibilities that investments cannot replace.
+              </p><span class="vf-card-meter"><i style="width:38%"></i></span><small>Role: protect earning power</small
               ></span
             >
             <span class="vf-flip-face vf-flip-back"
@@ -257,8 +266,12 @@ const faqSchema = {
           <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label="Show PMS and AIF details">
             <span class="vf-flip-face vf-flip-front"
               ><span class="vf-card-icon vf-icon-dots">•••</span><span class="vf-card-tag">05 / Alternatives</span
-              ><strong>PMS &<br /><em>AIFs</em></strong><span class="vf-card-meter"><i style="width:91%"></i></span
-              ><small>Suitability: eligible investors</small></span
+              ><strong>PMS &<br /><em>AIFs</em></strong><p class="vf-card-summary">
+                Specialist strategies for eligible investors seeking differentiated exposure and a deeper suitability
+                review.
+              </p><span class="vf-card-meter"><i style="width:91%"></i></span><small
+                >Suitability: eligible investors</small
+              ></span
             >
             <span class="vf-flip-face vf-flip-back"
               ><span class="vf-card-tag">Plain English</span><strong>For a portfolio with a bigger toolkit.</strong><p>
@@ -1218,6 +1231,16 @@ const faqSchema = {
       400 3rem/1 Georgia,
       serif;
     color: var(--gold);
+  }
+  .vf-card-summary {
+    color: var(--ink);
+    font-size: 0.76rem;
+    line-height: 1.55;
+    margin: 0.9rem 0 0;
+    max-width: 24ch;
+  }
+  .vf-flip-front .vf-card-summary {
+    margin-top: auto;
   }
   .vf-card-meter {
     height: 5px;
