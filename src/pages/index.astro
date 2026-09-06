@@ -504,23 +504,23 @@ const faqSchema = {
             'Create a shared language for money across a family.',
             'Different generations can have different goals. A calm process helps everyone understand the why.',
           ],
-        ].map(([number, title, front, back]) => (
+        ].map(([, title, front, back]) => (
           <article class="vf-flip-card vf-practice-card" data-flip-card>
-            <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label={`Show details about ${title}`}>
+            <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label={`Show how we do ${title}`}>
               <>
                 <span class="vf-flip-face vf-flip-front">
                   <>
-                    <span class="vf-card-tag">{number} / What we do</span>
+                    <span class="vf-card-tag">What we do</span>
                     <strong>{title}</strong>
                     <p>{front}</p>
                     <span class="vf-card-action" data-card-action="#contact" role="link" tabindex="0">
-                      Discuss this approach <span aria-hidden="true">↗</span>
+                      Explore the approach <span aria-hidden="true">↗</span>
                     </span>
                   </>
                 </span>
                 <span class="vf-flip-face vf-flip-back">
                   <>
-                    <span class="vf-card-tag">Our perspective</span>
+                    <span class="vf-card-tag">How we do it</span>
                     <strong>{title}</strong>
                     <p>{back}</p>
                     <span class="vf-card-hint">Tap to return ↺</span>
@@ -1822,9 +1822,26 @@ const faqSchema = {
     overflow: hidden;
     overflow-wrap: anywhere;
   }
+  .vf-practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .vf-practice-card,
+  .vf-practice-card .vf-flip-inner {
+    min-height: 23rem;
+  }
+  .vf-practice-card .vf-flip-face {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 1.45rem;
+  }
   .vf-practice-card .vf-flip-face strong {
     margin-top: 1.3rem;
     font-size: 1.55rem;
+    line-height: 1.08;
   }
   .vf-practice-card .vf-flip-face p {
     color: inherit;
@@ -1836,7 +1853,14 @@ const faqSchema = {
     background: #f1ede3;
   }
   .vf-practice-card .vf-flip-back {
+    display: none;
     background: var(--emerald);
+  }
+  .vf-practice-card.is-active .vf-flip-front {
+    display: none;
+  }
+  .vf-practice-card.is-active .vf-flip-back {
+    display: flex;
   }
   .vf-card-action {
     display: inline-flex;
@@ -2901,6 +2925,9 @@ const faqSchema = {
     .vf-table-row {
       min-width: 0;
     }
+    .vf-practice-grid {
+      grid-template-columns: 1fr;
+    }
   }
   @media (max-width: 420px) {
     .vf-topline {
@@ -2954,7 +2981,7 @@ const faqSchema = {
     }
     .vf-practice-card,
     .vf-practice-card .vf-flip-inner {
-      min-height: 300px;
+      min-height: 20rem;
     }
     .vf-flip-face {
       padding: 1.25rem;
