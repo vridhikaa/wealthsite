@@ -1,7 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7gEWxXc5BbXARFLxde5NYhDc0EkdVR.png';
+const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-8O1fGPXeCwjl97D7yMhlbMRCwMM2wz.png';
 
 const metadata = {
   title: 'Wealth Management & Investment Advisory in India | Vridhikaa Finserv',
@@ -69,7 +69,6 @@ const faqSchema = {
 
     <section class="vf-hero" id="top">
       <div class="vf-hero-copy">
-        <p class="vf-kicker">Wealth, with a point of view.</p>
         <h1>Make your money<br /><em>mean more.</em></h1>
         <p class="vf-lead">
           Thoughtful advice for the capital you have built — and the life, legacy and freedom it is meant to support.
@@ -87,7 +86,7 @@ const faqSchema = {
           src={logoUrl}
           alt="Vridhikaa Finserv upward arrow and lotus emblem"
         /><div class="vf-art-caption">
-          Live Sorted<br /><span>Since 2015 · India</span>
+          <strong>Wealth, with a point of view.</strong><span>Live Sorted · Since 2015 · India</span>
         </div>
       </div>
     </section>
@@ -576,7 +575,7 @@ const faqSchema = {
     <section class="vf-section vf-founder" id="about">
       <div class="vf-founder-photo">
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/me-1RSNgNSrc3BYlUggr1tbuN8dKZtzX5.jpg"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/me-2ieLApt9JZN5dboF3DJ5nTz2QRXlU3.png"
           alt="Founder of Vridhikaa Finserv"
           loading="lazy"
         />
@@ -938,13 +937,26 @@ const faqSchema = {
   }
   .vf-art-caption {
     position: absolute;
-    bottom: 2rem;
-    left: 2rem;
+    bottom: 1.8rem;
+    left: 0;
+    right: 0;
+    display: grid;
+    gap: 0.35rem;
+    padding: 0 1.25rem;
+    text-align: center;
     font-size: 0.65rem;
     letter-spacing: 0.14em;
     line-height: 1.7;
     text-transform: uppercase;
     color: #d9d3c7;
+  }
+  .vf-art-caption strong {
+    color: var(--ivory);
+    font:
+      500 clamp(0.85rem, 1.5vw, 1.1rem) / 1.2 Georgia,
+      serif;
+    letter-spacing: 0.02em;
+    text-transform: none;
   }
   .vf-art-caption span {
     color: var(--gold);
