@@ -86,8 +86,8 @@ const faqSchema = {
           class="vf-hero-logo"
           src={logoUrl}
           alt="Vridhikaa Finserv upward arrow and lotus emblem"
-        /><div class="vf-art-word" aria-hidden="true">V</div><div class="vf-art-caption">
-          Clarity in every direction<br /><span>Since 2015 · India</span>
+        /><div class="vf-art-caption">
+          Live Sorted<br /><span>Since 2015 · India</span>
         </div>
       </div>
     </section>
@@ -936,14 +936,6 @@ const faqSchema = {
     border: 1px solid rgba(180, 147, 88, 0.7);
     border-radius: 50%;
   }
-  .vf-art-word {
-    font-family: Georgia, serif;
-    font-size: 20rem;
-    line-height: 1;
-    color: var(--gold);
-    transform: translateY(-1rem);
-    z-index: 1;
-  }
   .vf-art-caption {
     position: absolute;
     bottom: 2rem;
@@ -1108,18 +1100,19 @@ const faqSchema = {
   }
   .vf-instrument-grid {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 0.8rem;
+    grid-template-columns: repeat(5, minmax(210px, 1fr));
+    gap: 1rem;
   }
   .vf-flip-card {
-    min-height: 350px;
-    perspective: 1200px;
+    min-height: 410px;
+    perspective: 1400px;
+    contain: layout paint;
   }
   .vf-flip-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 350px;
+    min-height: 410px;
     border: 1px solid var(--line);
     padding: 0;
     background: transparent;
@@ -1129,24 +1122,56 @@ const faqSchema = {
     transform-style: preserve-3d;
     transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
-  .vf-flip-card.is-flipped .vf-flip-inner {
+  .vf-flip-card.is-flipped .vf-flip-inner,
+  .vf-flip-card:hover .vf-flip-inner,
+  .vf-flip-card:focus-within .vf-flip-inner {
     transform: rotateY(180deg);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .vf-flip-card:hover .vf-flip-inner {
+      box-shadow: 0 1.25rem 2.5rem rgba(16, 45, 77, 0.16);
+    }
   }
   .vf-flip-face {
     position: absolute;
     inset: 0;
     display: flex;
     flex-direction: column;
-    padding: 1.4rem;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    padding: 1.65rem;
     backface-visibility: hidden;
+    overflow-wrap: anywhere;
+  }
+  .vf-flip-face p,
+  .vf-flip-face strong,
+  .vf-flip-face small {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+  .vf-flip-face strong {
+    text-wrap: balance;
   }
   .vf-flip-front {
-    background: var(--ivory);
+    background: linear-gradient(145deg, #faf7ef 0%, #eee7d9 100%);
   }
   .vf-flip-back {
-    background: var(--navy);
+    background: linear-gradient(145deg, #102d4d 0%, #173c50 56%, #245b51 100%);
     color: var(--ivory);
     transform: rotateY(180deg);
+  }
+  .vf-flip-back::after {
+    content: '';
+    position: absolute;
+    width: 9rem;
+    height: 9rem;
+    right: -3.5rem;
+    bottom: -3.5rem;
+    border: 1px solid rgba(203, 169, 96, 0.32);
+    border-radius: 50%;
+    pointer-events: none;
   }
   .vf-flip-face strong {
     margin-top: auto;
@@ -1232,10 +1257,10 @@ const faqSchema = {
     gap: 0.8rem;
   }
   .vf-practice-card {
-    min-height: 270px;
+    min-height: 330px;
   }
   .vf-practice-card .vf-flip-inner {
-    min-height: 270px;
+    min-height: 330px;
   }
   .vf-practice-card .vf-flip-face {
     overflow: hidden;
@@ -1259,6 +1284,8 @@ const faqSchema = {
   }
   .vf-card-hint {
     color: var(--gold);
+    transition: color 180ms ease;
+
     font-size: 0.65rem;
     letter-spacing: 0.08em;
     margin-top: auto;
@@ -1737,9 +1764,6 @@ const faqSchema = {
       width: 230px;
       height: 230px;
     }
-    .vf-art-word {
-      font-size: 13rem;
-    }
     .vf-trustbar {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1777,7 +1801,11 @@ const faqSchema = {
     }
     .vf-flip-card,
     .vf-flip-inner {
-      min-height: 310px;
+      min-height: 380px;
+    }
+    .vf-practice-card,
+    .vf-practice-card .vf-flip-inner {
+      min-height: 320px;
     }
     .vf-service {
       min-height: 280px;
@@ -1930,9 +1958,6 @@ const faqSchema = {
       width: 190px;
       height: 190px;
     }
-    .vf-art-word {
-      font-size: 10rem;
-    }
     .vf-trustbar {
       grid-template-columns: 1fr;
       gap: 1.1rem;
@@ -1948,7 +1973,14 @@ const faqSchema = {
     }
     .vf-flip-card,
     .vf-flip-inner {
-      min-height: 295px;
+      min-height: 330px;
+    }
+    .vf-practice-card,
+    .vf-practice-card .vf-flip-inner {
+      min-height: 300px;
+    }
+    .vf-flip-face {
+      padding: 1.25rem;
     }
     .vf-flip-face {
       padding: 1.1rem;
@@ -1982,7 +2014,14 @@ const faqSchema = {
 </style>
 
 <script>
-  const money = (value: number) => `₹ ${(value / 100000).toFixed(1)} L`;
+  const money = (value: number) => {
+    const crore = value / 10000000;
+    const lakh = value / 100000;
+    if (crore >= 1) return `₹ ${crore.toFixed(crore >= 10 ? 1 : 2)} Cr`;
+    if (lakh >= 1) return `₹ ${lakh.toFixed(lakh >= 10 ? 1 : 2)} Lakh`;
+    return `₹ ${Math.round(value).toLocaleString('en-IN')}`;
+  };
+  const moneyFull = (value: number) => `₹ ${Math.round(value).toLocaleString('en-IN')}`;
   const investment = document.querySelector<HTMLInputElement>('#investment');
   const years = document.querySelector<HTMLInputElement>('#years');
   const rate = document.querySelector<HTMLInputElement>('#rate');
@@ -2032,8 +2071,8 @@ const faqSchema = {
       principal += currentMonthly;
     }
     const inflationAdjusted = future / 1.06 ** horizon;
-    investmentValue.textContent = `₹ ${monthly.toLocaleString('en-IN')}`;
-    yearsValue.textContent = `${horizon} years`;
+    investmentValue.textContent = moneyFull(monthly);
+    yearsValue.textContent = `${horizon} years · ${months.toLocaleString('en-IN')} months`;
     rateValue.textContent = `${annualRate}%`;
     stepupValue.textContent = `${annualStepup * 100}%`;
     goalValue.textContent = money(goalAmount);
