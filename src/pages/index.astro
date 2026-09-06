@@ -160,22 +160,28 @@ const faqSchema = {
           One partner across the moving parts of your financial life — with the depth to go specialist when it counts.
         </p>
       </div><div class="vf-service-grid">
-        <article class="vf-service vf-service-featured">
+        <article
+          class="vf-service vf-service-featured is-active"
+          data-solution-card
+          tabindex="0"
+          role="button"
+          aria-expanded="true"
+        >
           <span class="vf-service-no">01 / CORE</span><h3>Mutual funds<br /><em>& goal planning</em></h3><p>
             Goal-led mutual fund selection across equity, debt and hybrid categories, explained in plain language.
             Scheme documents and risk factors should be reviewed before investing.
           </p><a href="#contact">Explore portfolios <span>↗</span></a>
-        </article><article class="vf-service">
+        </article><article class="vf-service" data-solution-card tabindex="0" role="button" aria-expanded="false">
           <span class="vf-service-no">02 / STABILITY</span><h3>Fixed income<br /><em>& bonds</em></h3><p>
             Income-oriented instruments, including debt mutual funds and bonds, with credit, liquidity, interest-rate
             and tax considerations.
           </p><a href="#tools">See the universe <span>↗</span></a>
-        </article><article class="vf-service">
+        </article><article class="vf-service" data-solution-card tabindex="0" role="button" aria-expanded="false">
           <span class="vf-service-no">03 / CONTEXT</span><h3>Goals<br /><em>& time horizons</em></h3><p>
             Clarify your goals, cash flow and time horizon before reviewing suitable mutual fund categories and scheme
             documents.
           </p><a href="#contact">Discuss your goals <span>↗</span></a>
-        </article><article class="vf-service">
+        </article><article class="vf-service" data-solution-card tabindex="0" role="button" aria-expanded="false">
           <span class="vf-service-no">04 / EDUCATION</span><h3>Fund facts<br /><em>& scheme documents</em></h3><p>
             Learn how to review objectives, costs, risks and suitability information before considering a mutual fund.
           </p><a href="#instruments">Review fund basics <span>↗</span></a>
@@ -498,23 +504,23 @@ const faqSchema = {
             'Create a shared language for money across a family.',
             'Different generations can have different goals. A calm process helps everyone understand the why.',
           ],
-        ].map(([number, title, front, back]) => (
+        ].map(([, title, front, back]) => (
           <article class="vf-flip-card vf-practice-card" data-flip-card>
-            <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label={`Show details about ${title}`}>
+            <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label={`Show how we do ${title}`}>
               <>
                 <span class="vf-flip-face vf-flip-front">
                   <>
-                    <span class="vf-card-tag">{number} / What we do</span>
+                    <span class="vf-card-tag">What we do</span>
                     <strong>{title}</strong>
                     <p>{front}</p>
                     <span class="vf-card-action" data-card-action="#contact" role="link" tabindex="0">
-                      Discuss this approach <span aria-hidden="true">↗</span>
+                      Explore the approach <span aria-hidden="true">↗</span>
                     </span>
                   </>
                 </span>
                 <span class="vf-flip-face vf-flip-back">
                   <>
-                    <span class="vf-card-tag">Our perspective</span>
+                    <span class="vf-card-tag">How we do it</span>
                     <strong>{title}</strong>
                     <p>{back}</p>
                     <span class="vf-card-hint">Tap to return ↺</span>
@@ -763,9 +769,40 @@ const faqSchema = {
       <div>
         <p class="vf-kicker">A considered universe</p><h2>Choose the right<br /><em>kind of certainty.</em></h2>
       </div><p>Different instruments solve different problems. The right answer is often a blend.</p>
-    </div><div class="vf-matrix-tabs" role="tablist">
-      <button class="is-active" data-matrix="growth">Growth</button><button data-matrix="stability">Stability</button
-      ><button data-matrix="protection">Protection</button>
+    </div>
+    <div class="vf-matrix-tabs" role="tablist" aria-label="Financial instruments">
+      <button
+        class="is-active"
+        id="matrix-tab-growth"
+        role="tab"
+        aria-selected="true"
+        aria-controls="matrix-content"
+        data-matrix="growth">Growth</button
+      ><button
+        id="matrix-tab-stability"
+        role="tab"
+        aria-selected="false"
+        aria-controls="matrix-content"
+        data-matrix="stability">Stability</button
+      ><button
+        id="matrix-tab-protection"
+        role="tab"
+        aria-selected="false"
+        aria-controls="matrix-content"
+        data-matrix="protection">Protection</button
+      ><button
+        id="matrix-tab-claims"
+        role="tab"
+        aria-selected="false"
+        aria-controls="matrix-content"
+        data-matrix="claims">Insurance claim settlement</button
+      ><button
+        id="matrix-tab-credit"
+        role="tab"
+        aria-selected="false"
+        aria-controls="matrix-content"
+        data-matrix="credit">Credit repair</button
+      >
     </div><div class="vf-matrix-table" id="matrix-content">
       <div class="vf-table-head">
         <span>Instrument</span><span>Role</span><span>Best considered for</span><span>Starting point</span>
@@ -1431,10 +1468,30 @@ const faqSchema = {
   .vf-service {
     min-height: 370px;
     padding: 1.7rem;
+    cursor: pointer;
+    transition:
+      background 220ms ease,
+      transform 220ms ease,
+      box-shadow 220ms ease;
     border-right: 1px solid rgba(244, 241, 233, 0.28);
     border-bottom: 1px solid rgba(244, 241, 233, 0.28);
     display: flex;
     flex-direction: column;
+  }
+  .vf-service:hover,
+  .vf-service:focus-visible,
+  .vf-service.is-active {
+    background: var(--emerald);
+    outline: none;
+    transform: translateY(-0.35rem);
+    box-shadow: 0 1rem 2rem rgba(4, 18, 30, 0.25);
+  }
+  .vf-service:not(.is-active) {
+    opacity: 0.86;
+  }
+  .vf-service:not(.is-active):hover,
+  .vf-service:not(.is-active):focus-visible {
+    opacity: 1;
   }
   .vf-service h3 {
     font-size: 2rem;
@@ -1765,9 +1822,26 @@ const faqSchema = {
     overflow: hidden;
     overflow-wrap: anywhere;
   }
+  .vf-practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .vf-practice-card,
+  .vf-practice-card .vf-flip-inner {
+    min-height: 23rem;
+  }
+  .vf-practice-card .vf-flip-face {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 1.45rem;
+  }
   .vf-practice-card .vf-flip-face strong {
     margin-top: 1.3rem;
     font-size: 1.55rem;
+    line-height: 1.08;
   }
   .vf-practice-card .vf-flip-face p {
     color: inherit;
@@ -1779,7 +1853,14 @@ const faqSchema = {
     background: #f1ede3;
   }
   .vf-practice-card .vf-flip-back {
+    display: none;
     background: var(--emerald);
+  }
+  .vf-practice-card.is-active .vf-flip-front {
+    display: none;
+  }
+  .vf-practice-card.is-active .vf-flip-back {
+    display: flex;
   }
   .vf-card-action {
     display: inline-flex;
@@ -2063,7 +2144,10 @@ const faqSchema = {
   }
   .vf-matrix-tabs button {
     min-width: 8rem;
+    min-height: 3.5rem;
     padding: 0.8rem 1rem;
+    white-space: normal;
+    line-height: 1.25;
     border-radius: 0.2rem;
     border-bottom: 2px solid transparent;
     transition:
@@ -2267,15 +2351,67 @@ const faqSchema = {
   @media (max-width: 640px) {
     .vf-matrix-tabs {
       overflow-x: auto;
+      align-items: stretch;
       justify-content: flex-start;
       scrollbar-width: thin;
     }
     .vf-matrix-tabs button {
-      flex: 0 0 auto;
+      flex: 0 0 10rem;
+      min-width: 10rem;
+    }
+    .vf-table-head {
+      display: none;
+    }
+    .vf-table-row {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+      padding: 1rem;
+    }
+    .vf-table-row::before {
+      display: block;
+      color: var(--emerald);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .vf-table-row > * {
+      display: block;
+    }
+    .vf-table-row > span:nth-child(2)::before {
+      content: 'Role · ';
+      color: var(--emerald);
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .vf-table-row > span:nth-child(3)::before {
+      content: 'Considered for · ';
+      color: var(--emerald);
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .vf-table-row > b::before {
+      content: 'Starting point · ';
+      color: var(--emerald);
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
   }
   .vf-matrix-table {
+    display: grid;
     border-top: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .vf-table-head,
+  .vf-table-row {
+    min-width: 0;
+  }
+  .vf-table-head > *,
+  .vf-table-row > * {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
   .vf-table-head,
   .vf-table-row {
@@ -2681,11 +2817,18 @@ const faqSchema = {
       display: none;
     }
     .vf-table-row {
-      grid-template-columns: 1fr 1fr;
-      gap: 0.7rem;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.45rem;
+      padding: 1rem;
+      line-height: 1.45;
     }
     .vf-table-row strong {
-      grid-column: 1/-1;
+      grid-column: auto;
+      font-size: 1rem;
+    }
+    .vf-table-row span,
+    .vf-table-row b {
+      overflow-wrap: anywhere;
     }
     .vf-footer {
       grid-template-columns: 1fr 1fr;
@@ -2782,6 +2925,9 @@ const faqSchema = {
     .vf-table-row {
       min-width: 0;
     }
+    .vf-practice-grid {
+      grid-template-columns: 1fr;
+    }
   }
   @media (max-width: 420px) {
     .vf-topline {
@@ -2835,7 +2981,7 @@ const faqSchema = {
     }
     .vf-practice-card,
     .vf-practice-card .vf-flip-inner {
-      min-height: 300px;
+      min-height: 20rem;
     }
     .vf-flip-face {
       padding: 1.25rem;
@@ -3032,6 +3178,25 @@ const faqSchema = {
       menu?.setAttribute('aria-expanded', 'false');
     })
   );
+  document.querySelectorAll<HTMLElement>('[data-solution-card]').forEach((card) => {
+    const activateSolution = () => {
+      document.querySelectorAll<HTMLElement>('[data-solution-card]').forEach((item) => {
+        const active = item === card;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-expanded', String(active));
+      });
+    };
+    card.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).closest('a')) return;
+      activateSolution();
+    });
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        activateSolution();
+      }
+    });
+  });
   const processSteps = [
     [
       '07',
@@ -3122,10 +3287,57 @@ const faqSchema = {
       }, 1800);
     });
   });
-  document.querySelectorAll('[data-matrix]').forEach((button) =>
+  const matrixContent = document.querySelector<HTMLElement>('#matrix-content');
+  const matrixData: Record<string, { rows: [string, string, string, string][] }> = {
+    growth: {
+      rows: [
+        ['Equity mutual funds', 'Long-term growth', 'Goals 7+ years away', '₹ 5,000 SIP'],
+        ['Index funds', 'Core market exposure', 'Simple diversified allocation', '₹ 500 SIP'],
+        ['Flexicap funds', 'Active allocation', 'Long-term wealth creation', '₹ 1,000 SIP'],
+      ],
+    },
+    stability: {
+      rows: [
+        ['Debt mutual funds', 'Income and stability', 'Nearer-term goals', '₹ 5,000 SIP'],
+        ['Target maturity funds', 'Defined maturity path', 'Known future liabilities', 'Scheme-specific'],
+        ['Bank fixed deposits', 'Capital familiarity', 'Short-term planning', 'Bank terms apply'],
+      ],
+    },
+    protection: {
+      rows: [
+        ['Emergency reserve', 'Liquidity buffer', 'Unexpected expenses', '3–12 months'],
+        ['Term insurance', 'Family protection', 'Income replacement needs', 'Policy-specific'],
+        ['Health cover', 'Medical risk transfer', 'Hospitalisation costs', 'Policy-specific'],
+      ],
+    },
+    claims: {
+      rows: [
+        ['Policy documents', 'Evidence and eligibility', 'Before filing a claim', 'Keep copies'],
+        ['Claim intimation', 'Start the process promptly', 'A covered event occurs', 'Insurer timelines'],
+        ['Settlement review', 'Check decision and deductions', 'After insurer response', 'Escalation may apply'],
+      ],
+    },
+    credit: {
+      rows: [
+        ['Credit report', 'Find reporting errors', 'Before applying for credit', 'Obtain from bureau'],
+        ['Dispute records', 'Correct inaccurate information', 'A genuine reporting issue', 'Keep evidence'],
+        ['Repayment plan', 'Build consistent history', 'Outstanding obligations', 'Lender terms apply'],
+      ],
+    },
+  };
+  const renderMatrix = (key: string) => {
+    const data = matrixData[key];
+    if (!matrixContent || !data) return;
+    matrixContent.innerHTML = `<div class="vf-table-head"><span>Instrument</span><span>Role</span><span>Best considered for</span><span>Starting point</span></div>${data.rows.map(([instrument, role, considered, start]) => `<div class="vf-table-row"><strong>${instrument}</strong><span>${role}</span><span>${considered}</span><b>${start}</b></div>`).join('')}`;
+  };
+  document.querySelectorAll<HTMLButtonElement>('[data-matrix]').forEach((button) =>
     button.addEventListener('click', () => {
-      document.querySelectorAll('[data-matrix]').forEach((item) => item.classList.remove('is-active'));
-      button.classList.add('is-active');
+      document.querySelectorAll<HTMLButtonElement>('[data-matrix]').forEach((item) => {
+        const active = item === button;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-selected', String(active));
+      });
+      renderMatrix(button.dataset.matrix ?? 'growth');
     })
   );
   document.querySelectorAll<HTMLButtonElement>('[data-fund]').forEach((button) =>
