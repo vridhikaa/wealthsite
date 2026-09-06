@@ -1,17 +1,48 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
+const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7gEWxXc5BbXARFLxde5NYhDc0EkdVR.png';
+
 const metadata = {
-  title: 'Vridhikaa Finserv | Intentional Wealth, Built for the Long Term',
+  title: 'Wealth Management & Investment Advisory in India | Vridhikaa Finserv',
   description:
-    'Independent wealth guidance across mutual funds, fixed income, insurance and alternative investments for families, founders and institutions.',
+    'Human, research-led wealth management in India across mutual funds, bonds, insurance, index funds and alternatives. Build a clearer long-term investment plan with Vridhikaa Finserv.',
+  canonical: 'https://vridhikaafinserv.com/',
+  openGraph: {
+    type: 'website',
+    url: 'https://vridhikaafinserv.com/',
+    siteName: 'Vridhikaa Finserv',
+    images: [{ url: logoUrl, width: 1200, height: 628 }],
+  },
   ignoreTitleTemplate: true,
 };
 
-const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7gEWxXc5BbXARFLxde5NYhDc0EkdVR.png';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What does a wealth manager do?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A wealth manager helps connect your goals, cash flow, investments, protection and tax context into a plan you can review over time.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Are mutual fund returns guaranteed?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. Mutual fund investments are market-linked. Risk, time horizon, costs and the scheme Riskometer should be considered before investing.',
+      },
+    },
+  ],
+};
 ---
 
 <Layout metadata={metadata}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <main class="vf-shell">
     <div class="vf-topline">
       <span>Independent wealth advisory</span><span>SEBI | AMFI | IRDAI aligned practice</span>
@@ -31,7 +62,8 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
           class="vf-menu"
           type="button"
           aria-expanded="false"
-          aria-controls="primary-nav">Menu <span>＋</span></button>
+          aria-controls="primary-nav">Menu <span>＋</span></button
+        >
       </div>
     </header>
 
@@ -45,11 +77,16 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
         <div class="vf-hero-actions">
           <a class="vf-button vf-button-dark" href="#contact">Begin a conversation <span>↗</span></a><a
             class="vf-text-link"
-            href="#approach">Discover our approach <span>↓</span></a>
+            href="#approach">Discover our approach <span>↓</span></a
+          >
         </div>
       </div>
       <div class="vf-hero-art" aria-label="Vridhikaa Finserv signature mark">
-        <div class="vf-art-ring"></div><div class="vf-art-word">V</div><div class="vf-art-caption">
+        <div class="vf-art-glow"></div><div class="vf-art-ring"></div><img
+          class="vf-hero-logo"
+          src={logoUrl}
+          alt="Vridhikaa Finserv upward arrow and lotus emblem"
+        /><div class="vf-art-word" aria-hidden="true">V</div><div class="vf-art-caption">
           Clarity in every direction<br /><span>Since 2015 · India</span>
         </div>
       </div>
@@ -68,8 +105,8 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
         <p class="vf-kicker">The Vridhikaa standard</p><h2>Less noise.<br /><em>More conviction.</em></h2>
       </div><div class="vf-approach-body">
         <p class="vf-big-copy">
-          We believe wealth management is not about chasing what is next. It is about understanding what matters,
-          structuring what you have, and staying the course with an experienced partner beside you.
+          We start with the real life behind the numbers: a child’s education, a business sale, parents to support, or
+          the quiet wish to work on your own terms. Then we shape the money around that life — not the other way around.
         </p><div class="vf-principles">
           <article>
             <span>01</span><h3>Listen deeply</h3><p>
@@ -116,6 +153,136 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
       </div>
     </section>
 
+    <section class="vf-section vf-instruments" id="instruments">
+      <div class="vf-section-heading">
+        <div>
+          <p class="vf-kicker">Financial instruments, explained</p><h2>Know what your<br /><em>money is doing.</em></h2>
+        </div>
+        <p>
+          Flip a card for the human version: where an instrument can help, what can go wrong, and which official source
+          to read next.
+        </p>
+      </div>
+      <div class="vf-instrument-grid">
+        <article class="vf-flip-card" data-flip-card>
+          <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label="Show equity mutual fund details">
+            <span class="vf-flip-face vf-flip-front"
+              ><span class="vf-card-icon vf-icon-chart">↗</span><span class="vf-card-tag">01 / Growth</span><strong
+                >Equity<br /><em>mutual funds</em></strong
+              ><span class="vf-card-meter"><i style="width:82%"></i></span><small>Horizon: usually 7+ years</small
+              ></span
+            >
+            <span class="vf-flip-face vf-flip-back"
+              ><span class="vf-card-tag">Plain English</span><strong>For goals that can wait.</strong><p>
+                Your money is pooled and invested in shares. It can move sharply in the short term, but diversification
+                and time can make it useful for long-term goals.
+              </p><small
+                >Riskometer applies · Read <a
+                  href="https://www.sebi.gov.in/legal/circulars/oct-2020/standardized-risk-o-meter-for-mutual-fund-schemes_47864.html"
+                  target="_blank"
+                  rel="noreferrer">SEBI’s riskometer guidance</a
+                >.</small
+              ></span
+            >
+          </button>
+        </article>
+        <article class="vf-flip-card" data-flip-card>
+          <button
+            class="vf-flip-inner"
+            type="button"
+            aria-pressed="false"
+            aria-label="Show bonds and fixed income details"
+          >
+            <span class="vf-flip-face vf-flip-front"
+              ><span class="vf-card-icon vf-icon-bond">—</span><span class="vf-card-tag">02 / Stability</span><strong
+                >Bonds &<br /><em>fixed income</em></strong
+              ><span class="vf-card-meter"><i style="width:54%"></i></span><small>Role: income and ballast</small></span
+            >
+            <span class="vf-flip-face vf-flip-back"
+              ><span class="vf-card-tag">Plain English</span><strong>For the part that steadies you.</strong><p>
+                A bond is a loan to a government or company. You receive interest, but credit, interest-rate and
+                liquidity risks still matter.
+              </p><small
+                >Compare sovereign options with <a
+                  href="https://www.rbi.org.in/Scripts/FAQView.aspx?Id=79"
+                  target="_blank"
+                  rel="noreferrer">RBI’s government securities guide</a
+                >.</small
+              ></span
+            >
+          </button>
+        </article>
+        <article class="vf-flip-card" data-flip-card>
+          <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label="Show index fund details">
+            <span class="vf-flip-face vf-flip-front"
+              ><span class="vf-card-icon vf-icon-grid">＋</span><span class="vf-card-tag">03 / Core</span><strong
+                >Index<br /><em>funds</em></strong
+              ><span class="vf-card-meter"><i style="width:68%"></i></span><small>Role: broad market exposure</small
+              ></span
+            >
+            <span class="vf-flip-face vf-flip-back"
+              ><span class="vf-card-tag">Plain English</span><strong>For keeping it simple.</strong><p>
+                An index fund follows a market index instead of trying to pick every winner. Costs and tracking
+                difference are worth checking before investing.
+              </p><small
+                >Mutual fund education: <a
+                  href="https://www.amfiindia.com/investor-corner/knowledge-center"
+                  target="_blank"
+                  rel="noreferrer">AMFI Knowledge Centre</a
+                >.</small
+              ></span
+            >
+          </button>
+        </article>
+        <article class="vf-flip-card" data-flip-card>
+          <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label="Show insurance details">
+            <span class="vf-flip-face vf-flip-front"
+              ><span class="vf-card-icon vf-icon-shield">◇</span><span class="vf-card-tag">04 / Protection</span><strong
+                >Insurance<br /><em>cover</em></strong
+              ><span class="vf-card-meter"><i style="width:38%"></i></span><small>Role: protect earning power</small
+              ></span
+            >
+            <span class="vf-flip-face vf-flip-back"
+              ><span class="vf-card-tag">Plain English</span><strong>For the risks investments cannot fix.</strong><p>
+                Life and health cover protect people, not portfolios. Start with the financial gap your family would
+                face, then check exclusions and claim terms.
+              </p><small
+                >Product oversight: <a href="https://irdai.gov.in/consumer-education" target="_blank" rel="noreferrer"
+                  >IRDAI consumer education</a
+                >.</small
+              ></span
+            >
+          </button>
+        </article>
+        <article class="vf-flip-card" data-flip-card>
+          <button class="vf-flip-inner" type="button" aria-pressed="false" aria-label="Show PMS and AIF details">
+            <span class="vf-flip-face vf-flip-front"
+              ><span class="vf-card-icon vf-icon-dots">•••</span><span class="vf-card-tag">05 / Alternatives</span
+              ><strong>PMS &<br /><em>AIFs</em></strong><span class="vf-card-meter"><i style="width:91%"></i></span
+              ><small>Suitability: eligible investors</small></span
+            >
+            <span class="vf-flip-face vf-flip-back"
+              ><span class="vf-card-tag">Plain English</span><strong>For a portfolio with a bigger toolkit.</strong><p>
+                These structures may offer concentrated or private-market exposure. Fees, lock-ins, valuation risk and
+                access rules need a careful suitability check.
+              </p><small
+                >Start with <a
+                  href="https://www.sebi.gov.in/curation/alternative-investment-funds.html"
+                  target="_blank"
+                  rel="noreferrer">SEBI’s AIF information</a
+                >.</small
+              ></span
+            >
+          </button>
+        </article>
+      </div>
+      <p class="vf-source-note">
+        Data note: the card content describes product characteristics, not expected returns. Mutual fund assets in India
+        stood at ₹82.03 lakh crore as of 28 February 2026, according to AMFI. Figures are informational and should be
+        checked against current official disclosures.
+      </p>
+    </section>
+
     <section class="vf-section vf-tools" id="tools">
       <div class="vf-section-heading">
         <div><p class="vf-kicker">Investor tools</p><h2>Numbers become<br /><em>useful here.</em></h2></div><p>
@@ -126,7 +293,8 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
           <div class="vf-tool-tabs" role="tablist">
             <button class="is-active" data-calc="sip" role="tab">Monthly SIP</button><button
               data-calc="lumpsum"
-              role="tab">Lumpsum</button>
+              role="tab">Lumpsum</button
+            >
           </div><div class="vf-calc-row">
             <label
               >Monthly investment <output id="investment-value">₹ 25,000</output><input
@@ -154,7 +322,8 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
                 max="18"
                 step="1"
                 value="12"
-              /></label>
+              /></label
+            >
           </div><div class="vf-calc-result">
             <div><span>Estimated value*</span><strong id="future-value">₹ 58.1 L</strong></div><div>
               <span>Your investment</span><strong id="principal-value">₹ 30.0 L</strong>
@@ -166,7 +335,8 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
         </div><div class="vf-tool-note">
           <span class="vf-note-mark">↗</span><p>Good planning begins with a useful first estimate.</p><a
             href="#contact"
-            class="vf-text-link">Get a personalised view <span>↗</span></a>
+            class="vf-text-link">Get a personalised view <span>↗</span></a
+          >
         </div>
       </div>
     </section>
@@ -184,13 +354,16 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
           <span>Instrument</span><span>Role</span><span>Best considered for</span><span>Starting point</span>
         </div><div class="vf-table-row">
           <strong>Equity mutual funds</strong><span>Long-term growth</span><span>Goals 7+ years away</span><b
-            >₹ 5,000 SIP</b>
+            >₹ 5,000 SIP</b
+          >
         </div><div class="vf-table-row">
           <strong>Index funds</strong><span>Core market exposure</span><span>Simple, diversified allocation</span><b
-            >₹ 500 SIP</b>
+            >₹ 500 SIP</b
+          >
         </div><div class="vf-table-row">
           <strong>Flexicap funds</strong><span>Active allocation</span><span>Long-term wealth creation</span><b
-            >₹ 1,000 SIP</b>
+            >₹ 1,000 SIP</b
+          >
         </div>
       </div>
     </section>
@@ -204,7 +377,8 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
       </div><div class="vf-fund-card">
         <div class="vf-fund-tabs">
           <button class="is-active" data-fund="one">Parag Parikh Flexi Cap</button><button data-fund="two"
-            >HDFC Balanced Advantage</button>
+            >HDFC Balanced Advantage</button
+          >
         </div><div class="vf-fund-title">
           <span>Illustrative snapshot</span><h3 id="fund-name">Parag Parikh Flexi Cap</h3><p id="fund-meta">
             Equity · Flexicap · Direct Growth
@@ -251,7 +425,8 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
         ><a href="#disclosures">Complaints</a>
       </div><div class="vf-footer-bottom" id="disclosures">
         <span>© 2026 Vridhikaa Finserv. All rights reserved.</span><span
-          >Mutual fund investments are subject to market risks. Read all scheme related documents carefully.</span>
+          >Mutual fund investments are subject to market risks. Read all scheme related documents carefully.</span
+        >
       </div>
     </footer>
 
@@ -472,6 +647,23 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
     background: var(--navy);
     color: var(--ivory);
   }
+  .vf-art-glow {
+    position: absolute;
+    width: 70%;
+    aspect-ratio: 1;
+    background: radial-gradient(circle, rgba(180, 147, 88, 0.3), transparent 62%);
+    filter: blur(18px);
+  }
+  .vf-hero-logo {
+    position: absolute;
+    z-index: 2;
+    width: min(72%, 390px);
+    max-height: 74%;
+    object-fit: contain;
+    opacity: 0.96;
+    mix-blend-mode: screen;
+    filter: sepia(0.18) saturate(0.78) contrast(1.08) brightness(1.18);
+  }
   .vf-art-ring {
     width: 340px;
     height: 340px;
@@ -646,6 +838,119 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
   }
   .vf-service-featured {
     background: var(--emerald);
+  }
+  .vf-instruments {
+    background: #e9e4d9;
+    max-width: none;
+    padding-left: max(calc((100vw - 1240px) / 2 + 4.5rem), 1.25rem);
+    padding-right: max(calc((100vw - 1240px) / 2 + 4.5rem), 1.25rem);
+  }
+  .vf-instruments .vf-section-heading > p {
+    color: var(--ink);
+  }
+  .vf-instrument-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+  .vf-flip-card {
+    min-height: 350px;
+    perspective: 1200px;
+  }
+  .vf-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    border: 1px solid var(--line);
+    padding: 0;
+    background: transparent;
+    color: var(--navy);
+    text-align: left;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .vf-flip-card.is-flipped .vf-flip-inner {
+    transform: rotateY(180deg);
+  }
+  .vf-flip-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem;
+    backface-visibility: hidden;
+  }
+  .vf-flip-front {
+    background: var(--ivory);
+  }
+  .vf-flip-back {
+    background: var(--navy);
+    color: var(--ivory);
+    transform: rotateY(180deg);
+  }
+  .vf-flip-face strong {
+    margin-top: auto;
+    font:
+      400 1.7rem/1.02 Georgia,
+      serif;
+    letter-spacing: -0.045em;
+  }
+  .vf-flip-face em {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .vf-card-tag {
+    color: var(--emerald);
+    font-size: 0.58rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+  .vf-flip-back .vf-card-tag {
+    color: #b9c7c1;
+  }
+  .vf-card-icon {
+    font:
+      400 3rem/1 Georgia,
+      serif;
+    color: var(--gold);
+  }
+  .vf-card-meter {
+    height: 5px;
+    margin: 1.2rem 0 0.65rem;
+    background: rgba(16, 45, 77, 0.12);
+  }
+  .vf-card-meter i {
+    display: block;
+    height: 100%;
+    background: var(--emerald);
+  }
+  .vf-flip-face small {
+    color: var(--emerald);
+    font-size: 0.65rem;
+    line-height: 1.5;
+  }
+  .vf-flip-back small {
+    color: #c7d4cc;
+    margin-top: auto;
+  }
+  .vf-flip-back p {
+    color: #e5e9e2;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    margin: 1.2rem 0;
+  }
+  .vf-flip-back a {
+    color: var(--gold);
+    text-underline-offset: 3px;
+  }
+  .vf-source-note {
+    max-width: 850px;
+    color: #6d786f;
+    font-size: 0.68rem;
+    line-height: 1.6;
+    margin: 2rem 0 0;
   }
   .vf-tools {
     background: #e9e4d9;
@@ -1052,8 +1357,13 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
       gap: 3rem;
     }
     .vf-principles,
-    .vf-service-grid {
+    .vf-service-grid,
+    .vf-instrument-grid {
       grid-template-columns: 1fr;
+    }
+    .vf-flip-card,
+    .vf-flip-inner {
+      min-height: 310px;
     }
     .vf-service {
       min-height: 280px;
@@ -1105,8 +1415,18 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
     :global(html) {
       scroll-behavior: auto;
     }
-    .vf-button {
+    .vf-button,
+    .vf-flip-inner {
       transition: none;
+    }
+    .vf-flip-card.is-flipped .vf-flip-inner {
+      transform: none;
+    }
+    .vf-flip-card.is-flipped .vf-flip-front {
+      display: none;
+    }
+    .vf-flip-card:not(.is-flipped) .vf-flip-back {
+      display: none;
     }
   }
 </style>
@@ -1163,6 +1483,13 @@ const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7g
       menu?.setAttribute('aria-expanded', 'false');
     })
   );
+  document.querySelectorAll<HTMLElement>('[data-flip-card]').forEach((card) => {
+    const button = card.querySelector<HTMLButtonElement>('.vf-flip-inner');
+    button?.addEventListener('click', () => {
+      const flipped = card.classList.toggle('is-flipped');
+      button.setAttribute('aria-pressed', String(flipped));
+    });
+  });
   document.querySelectorAll('[data-matrix]').forEach((button) =>
     button.addEventListener('click', () => {
       document.querySelectorAll('[data-matrix]').forEach((item) => item.classList.remove('is-active'));
