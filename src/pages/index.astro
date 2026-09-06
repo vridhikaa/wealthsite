@@ -616,7 +616,8 @@ const faqSchema = {
                 ><option value="0">0%</option><option value="0.1">10%</option><option value="0.2">20%</option><option
                   value="0.3"
                   selected>30%</option
-                ></select>
+                ></select
+              >
             </div>
             <div class="vf-bond-results">
               <div><span>Bank FD maturity</span><strong id="fd-maturity">₹ 13.06 Lakh</strong></div><div>
@@ -824,7 +825,7 @@ const faqSchema = {
 
     <footer class="vf-footer">
       <div class="vf-footer-brand">
-        <img src={logoUrl} alt="Vridhikaa Finserv" /><p>वृद्धिरिद्धी शुद्धसम्पदः ,</p>
+        <img src={logoUrl} alt="Vridhikaa Finserv" /><p>वृद्धिरिद्धी शुद्धसम्पदः</p>
       </div><div>
         <span class="vf-footer-label">Navigate</span><a href="#approach">Our approach</a><a href="#solutions"
           >Solutions</a
@@ -2166,10 +2167,22 @@ const faqSchema = {
     background: transparent;
   }
   .vf-footer-brand p {
-    font-family: Georgia, serif;
-    font-size: 1rem;
-    max-width: 170px;
+    max-width: 100%;
     margin-top: 1.2rem;
+    color: #f8d98b;
+    font:
+      700 clamp(1.35rem, 3vw, 2.35rem) / 1.15 Georgia,
+      serif;
+    letter-spacing: 0.015em;
+    text-wrap: balance;
+    background: linear-gradient(110deg, #9b681d 0%, #f8d98b 22%, #fff1b0 48%, #c88b2d 72%, #ffe4a0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow:
+      0 0.12rem 0.08rem rgba(74, 42, 10, 0.5),
+      0 0 1.25rem rgba(221, 170, 65, 0.34);
+    filter: drop-shadow(0 0.28rem 0.3rem rgba(16, 45, 77, 0.24));
   }
   .vf-footer-label {
     color: var(--gold);
