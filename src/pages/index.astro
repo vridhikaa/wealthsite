@@ -160,22 +160,28 @@ const faqSchema = {
           One partner across the moving parts of your financial life — with the depth to go specialist when it counts.
         </p>
       </div><div class="vf-service-grid">
-        <article class="vf-service vf-service-featured">
+        <article
+          class="vf-service vf-service-featured is-active"
+          data-solution-card
+          tabindex="0"
+          role="button"
+          aria-expanded="true"
+        >
           <span class="vf-service-no">01 / CORE</span><h3>Mutual funds<br /><em>& goal planning</em></h3><p>
             Goal-led mutual fund selection across equity, debt and hybrid categories, explained in plain language.
             Scheme documents and risk factors should be reviewed before investing.
           </p><a href="#contact">Explore portfolios <span>↗</span></a>
-        </article><article class="vf-service">
+        </article><article class="vf-service" data-solution-card tabindex="0" role="button" aria-expanded="false">
           <span class="vf-service-no">02 / STABILITY</span><h3>Fixed income<br /><em>& bonds</em></h3><p>
             Income-oriented instruments, including debt mutual funds and bonds, with credit, liquidity, interest-rate
             and tax considerations.
           </p><a href="#tools">See the universe <span>↗</span></a>
-        </article><article class="vf-service">
+        </article><article class="vf-service" data-solution-card tabindex="0" role="button" aria-expanded="false">
           <span class="vf-service-no">03 / CONTEXT</span><h3>Goals<br /><em>& time horizons</em></h3><p>
             Clarify your goals, cash flow and time horizon before reviewing suitable mutual fund categories and scheme
             documents.
           </p><a href="#contact">Discuss your goals <span>↗</span></a>
-        </article><article class="vf-service">
+        </article><article class="vf-service" data-solution-card tabindex="0" role="button" aria-expanded="false">
           <span class="vf-service-no">04 / EDUCATION</span><h3>Fund facts<br /><em>& scheme documents</em></h3><p>
             Learn how to review objectives, costs, risks and suitability information before considering a mutual fund.
           </p><a href="#instruments">Review fund basics <span>↗</span></a>
@@ -1431,10 +1437,30 @@ const faqSchema = {
   .vf-service {
     min-height: 370px;
     padding: 1.7rem;
+    cursor: pointer;
+    transition:
+      background 220ms ease,
+      transform 220ms ease,
+      box-shadow 220ms ease;
     border-right: 1px solid rgba(244, 241, 233, 0.28);
     border-bottom: 1px solid rgba(244, 241, 233, 0.28);
     display: flex;
     flex-direction: column;
+  }
+  .vf-service:hover,
+  .vf-service:focus-visible,
+  .vf-service.is-active {
+    background: var(--emerald);
+    outline: none;
+    transform: translateY(-0.35rem);
+    box-shadow: 0 1rem 2rem rgba(4, 18, 30, 0.25);
+  }
+  .vf-service:not(.is-active) {
+    opacity: 0.86;
+  }
+  .vf-service:not(.is-active):hover,
+  .vf-service:not(.is-active):focus-visible {
+    opacity: 1;
   }
   .vf-service h3 {
     font-size: 2rem;
@@ -3032,6 +3058,25 @@ const faqSchema = {
       menu?.setAttribute('aria-expanded', 'false');
     })
   );
+  document.querySelectorAll<HTMLElement>('[data-solution-card]').forEach((card) => {
+    const activateSolution = () => {
+      document.querySelectorAll<HTMLElement>('[data-solution-card]').forEach((item) => {
+        const active = item === card;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-expanded', String(active));
+      });
+    };
+    card.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).closest('a')) return;
+      activateSolution();
+    });
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        activateSolution();
+      }
+    });
+  });
   const processSteps = [
     [
       '07',
